@@ -1,0 +1,169 @@
+/* --- START OF FILE agencies.css --- */
+/* Styles specific to the agencies.html page */
+
+/* Enhanced Page Header Styles (If unique variations are needed for Agencies page, add them here) */
+/* Example: Maybe a different icon for the header? */
+/* .page-header-section.agencies-header .header-icon i { class: 'fas fa-building'; } */
+
+/* --- Agencies Grid Section --- */
+#agencies-grid {
+    /* Add specific section padding or background if needed */
+}
+.brands-subtitle { /* Specific style for subtitles on agencies page */
+    font-weight: 600;
+    color: var(--primary-dark);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+:root.dark-mode .brands-subtitle { color: var(--primary-light-dark); }
+
+.brands-subtitle::after { /* Underline effect for subtitles */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent-gradient); /* Use accent gradient */
+    border-radius: 3px;
+}
+:root.dark-mode .brands-subtitle::after { background: var(--accent-gradient-dark); }
+
+
+.agencies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
+    gap: var(--grid-gap); /* Use gap from base CSS */
+    margin-top: 2rem; /* Space below section title/subtitle */
+}
+
+.agency-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column; /* Stack logo, content, role */
+    text-align: center;
+    transition: var(--transition-base);
+    padding: var(--card-padding);
+}
+:root.dark-mode .agency-card {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+    box-shadow: var(--box-shadow-dark);
+}
+
+.agency-card:hover {
+    transform: translateY(-6px); /* Standard lift */
+    box-shadow: var(--box-shadow-hover);
+}
+:root.dark-mode .agency-card:hover {
+    box-shadow: var(--box-shadow-hover-dark);
+}
+
+.agency-logo {
+    margin-bottom: 1.5rem;
+    min-height: 80px; /* Ensure space for logo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0; /* Add some vertical padding */
+}
+
+.agency-logo img {
+    max-height: 65px; /* Slightly smaller than homepage */
+    max-width: 180px; /* Limit width */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+/* Dark mode filter for logos on agencies page */
+:root.dark-mode .agency-logo img {
+    filter: brightness(0) invert(0.9) contrast(1.1); /* Example filter - adjust as needed */
+    opacity: 0.9;
+}
+.agency-card:hover .agency-logo img {
+    transform: scale(1.05);
+}
+
+.agency-content {
+    flex-grow: 1; /* Ensure content takes available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push role down if content is short */
+}
+
+.agency-name {
+    font-size: 1.4rem; /* Slightly smaller */
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+:root.dark-mode .agency-name { color: var(--primary-color-dark); }
+
+.agency-description {
+    font-size: 0.95rem;
+    color: var(--text-muted-color);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Allow description to push role down */
+}
+:root.dark-mode .agency-description { color: var(--text-muted-color-dark); }
+
+.agency-role {
+    display: inline-block; /* Allows centering */
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 6px 15px;
+    border-radius: var(--border-radius);
+    margin-top: auto; /* Push to bottom if content above is short */
+    margin-bottom: 0; /* Remove default bottom margin */
+    border: 1px solid;
+    align-self: center; /* Center horizontally */
+}
+
+.agency-role.exclusive {
+    color: var(--accent-color);
+    background-color: rgba(255, 152, 0, 0.08);
+    border-color: rgba(255, 152, 0, 0.3);
+}
+:root.dark-mode .agency-role.exclusive {
+    color: var(--accent-color-dark);
+    background-color: rgba(255, 192, 120, 0.1);
+    border-color: rgba(255, 192, 120, 0.4);
+}
+
+.agency-role.certified {
+    color: var(--secondary-color);
+    background-color: rgba(76, 175, 80, 0.08);
+    border-color: rgba(76, 175, 80, 0.3);
+}
+:root.dark-mode .agency-role.certified {
+    color: var(--secondary-color-dark);
+    background-color: rgba(105, 219, 124, 0.1);
+    border-color: rgba(105, 219, 124, 0.4);
+}
+
+.agency-role i {
+    margin-inline-end: 8px;
+}
+html[lang="en"] .agency-role i { margin-inline-start: 8px; margin-inline-end: 0; }
+
+/* --- Agencies CTA Section --- */
+#agencies-cta {
+    /* Inherits styles from .final-cta-section in base style.css */
+    padding: 5rem 0; /* Example override */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .agencies-container {
+         grid-template-columns: 1fr; /* Stack cards */
+    }
+}
+/* --- END OF FILE agencies.css --- */
+

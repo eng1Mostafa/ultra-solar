@@ -1,0 +1,84 @@
+/* --- START OF FILE privacy-policy.css --- */
+/* Styles specific to the privacy-policy.html page */
+
+/* --- Privacy Policy Content Area --- */
+.content-container { /* Shared class for centered content */
+    max-width: 850px; /* Standard width for content pages */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.privacy-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+:root.dark-mode .privacy-section {
+    border-bottom-color: var(--border-color-dark);
+}
+.privacy-section:last-of-type { /* Use last-of-type for safety */
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.privacy-heading {
+    font-size: 1.5rem; /* Adjusted size */
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: start; /* Keep left/right aligned */
+    font-weight: 700;
+}
+:root.dark-mode .privacy-heading { color: var(--primary-color-dark); }
+
+.privacy-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    text-align: justify; /* Justify text */
+}
+:root.dark-mode .privacy-section p { color: var(--text-color-dark); }
+
+.privacy-section ul,
+.privacy-section ol {
+    margin-bottom: 1rem;
+    padding-inline-start: 30px; /* Indentation */
+    list-style: revert; /* Use browser default styles (disc/decimal) */
+    color: var(--text-color);
+}
+:root.dark-mode .privacy-section ul,
+:root.dark-mode .privacy-section ol { color: var(--text-color-dark); }
+
+.privacy-section ul li,
+.privacy-section ol li {
+    margin-bottom: 0.8rem; /* Adjusted spacing */
+    line-height: 1.7;
+}
+
+.privacy-section ul li strong,
+.privacy-section ol li strong {
+    font-weight: var(--bold-font-weight);
+    color: var(--primary-dark);
+}
+:root.dark-mode .privacy-section ul li strong,
+:root.dark-mode .privacy-section ol li strong { color: var(--primary-light-dark); }
+
+
+.privacy-section a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 600;
+}
+.privacy-section a:hover { color: var(--accent-color); }
+:root.dark-mode .privacy-section a { color: var(--primary-color-dark); }
+:root.dark-mode .privacy-section a:hover { color: var(--accent-color-dark); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .privacy-heading { font-size: 1.3rem; }
+    .privacy-section p { font-size: 1rem; }
+    .privacy-section ul, .privacy-section ol { padding-inline-start: 20px; }
+}
+
+/* --- END OF FILE privacy-policy.css --- */
