@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المنتجات | Ultra Solar Egypt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/css-style.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f5f7fa;
+            padding: 0;
+            margin: 0;
+        }
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .admin-header {
+            background-color: #00695c;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-panel {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .auth-screen {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Cairo', sans-serif;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #00695c;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #607d8b;
+            color: white;
+        }
+        .btn-danger {
+            background-color: #d32f2f;
+            color: white;
+        }
+        .btn-success {
+            background-color: #2e7d32;
+            color: white;
+        }
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .products-table th, .products-table td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #eee;
+        }
+        .products-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #eee;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+        }
+        .tab-button.active {
+            background-color: #00695c;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .image-preview {
+            max-width: 100px;
+            max-height: 100px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+        #statusMessage {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen (Initially Visible) -->
+    <div id="authScreen" class="auth-screen">
+        <h2>إدارة المنتجات</h2>
+        <p>يرجى إدخال كلمة المرور للدخول</p>
+        <div class="form-group">
+            <input type="password" id="adminPassword" class="form-control" placeholder="كلمة المرور">
+        </div>
+        <button id="loginBtn" class="btn btn-primary">دخول</button>
+    </div>
+
+    <!-- Admin Dashboard (Initially Hidden) -->
+    <div id="adminDashboard" style="display: none;">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>إدارة المنتجات</h1>
+                <button id="logoutBtn" class="btn btn-secondary">تسجيل خروج</button>
+            </div>
+
+            <div id="statusMessage"></div>
+
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="productsList">قائمة المنتجات</button>
+                <button class="tab-button" data-tab="addProduct">إضافة منتج جديد</button>
+                <button class="tab-button" data-tab="importExport">استيراد / تصدير البيانات</button>
+            </div>
+
+            <!-- Products List Tab -->
+            <div id="productsList" class="tab-content active admin-panel">
+                <div class="form-group">
+                    <input type="text" id="searchProducts" class="form-control" placeholder="بحث عن منتج...">
+                </div>
+                <div class="table-container">
+                    <table class="products-table">
+                        <thead>
+                            <tr>
+                                <th>الصورة</th>
+                                <th>العلامة التجارية</th>
+                                <th>اسم المنتج</th>
+                                <th>الفئات</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody">
+                            <!-- Products will be loaded here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Add/Edit Product Tab -->
+            <div id="addProduct" class="tab-content admin-panel">
+                <h2 id="productFormTitle">إضافة منتج جديد</h2>
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="brand">العلامة التجارية</label>
+                            <input type="text" id="brand" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">اسم المنتج</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="categories">الفئات (مفصولة بمسافات)</label>
+                            <input type="text" id="categories" class="form-control" required placeholder="مثال: battery sako lithium solar">
+                        </div>
+                        <div class="form-group">
+                            <label for="badgeType">نوع الشارة</label>
+                            <input type="text" id="badgeType" class="form-control" required placeholder="مثال: battery lithium">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="badgeIcon">أيقونة الشارة</label>
+                            <input type="text" id="badgeIcon" class="form-control" required placeholder="مثال: battery-full">
+                        </div>
+                        <div class="form-group">
+                            <label for="badgeText">نص الشارة</label>
+                            <input type="text" id="badgeText" class="form-control" required placeholder="مثال: Lithium Battery">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="imagePath">مسار الصورة</label>
+                            <input type="text" id="imagePath" class="form-control" required placeholder="مثال: images/battery-product.jpg">
+                            <img id="imagePreview" class="image-preview" style="display: none;">
+                        </div>
+                        <div class="form-group">
+                            <label for="imageAlt">وصف الصورة البديل</label>
+                            <input type="text" id="imageAlt" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriptionAr">وصف المنتج (عربي)</label>
+                        <textarea id="descriptionAr" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriptionEn">وصف المنتج (إنجليزي)</label>
+                        <textarea id="descriptionEn" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">حفظ المنتج</button>
+                        <button type="button" id="cancelEdit" class="btn btn-secondary" style="display: none;">إلغاء التعديل</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Import/Export Tab -->
+            <div id="importExport" class="tab-content admin-panel">
+                <div class="form-group">
+                    <h3>تصدير البيانات</h3>
+                    <p>تنزيل ملف JSON يحتوي على جميع المنتجات</p>
+                    <button id="exportBtn" class="btn btn-primary">تصدير البيانات</button>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <h3>استيراد البيانات</h3>
+                    <p>تحميل ملف JSON يحتوي على المنتجات</p>
+                    <input type="file" id="importFile" accept=".json">
+                    <button id="importBtn" class="btn btn-primary">استيراد البيانات</button>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <h3>تطبيق التغييرات على صفحة المنتجات</h3>
+                    <p>انسخ الكود التالي وضعه في صفحة products-solutions.html</p>
+                    <textarea id="codeOutput" class="form-control" rows="10" readonly></textarea>
+                    <button id="copyCodeBtn" class="btn btn-secondary">نسخ الكود</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set your password here - change this to something secure!
+        const ADMIN_PASSWORD = "ultrasolar2024";
+        
+        // DOM Elements
+        const authScreen = document.getElementById('authScreen');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const loginBtn = document.getElementById('loginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const productForm = document.getElementById('productForm');
+        const productsTableBody = document.getElementById('productsTableBody');
+        const statusMessage = document.getElementById('statusMessage');
+        const exportBtn = document.getElementById('exportBtn');
+        const importBtn = document.getElementById('importBtn');
+        const importFile = document.getElementById('importFile');
+        const codeOutput = document.getElementById('codeOutput');
+        const copyCodeBtn = document.getElementById('copyCodeBtn');
+        const searchProducts = document.getElementById('searchProducts');
+        const imagePathInput = document.getElementById('imagePath');
+        const imagePreview = document.getElementById('imagePreview');
+        const cancelEditBtn = document.getElementById('cancelEdit');
+        
+        // Products Array - Load from localStorage if exists
+        let products = [];
+        // مسار ومقبض الملف
+        let fileHandle = null;
+        let autoSaveEnabled = true; // تفعيل الحفظ التلقائي بشكل افتراضي
+
+        // Show Status Message - تعريف الدالة أولاً
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = type;
+            statusMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Render Products Table - تعريف الدالة أولاً
+        function renderProductsTable() {
+            productsTableBody.innerHTML = '';
+            
+            if (products.length === 0) {
+                productsTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center;">لا توجد منتجات حالياً</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            products.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <img src="${product.imagePath}" alt="${product.imageAlt}" style="width: 50px; height: 50px; object-fit: cover;">
+                    </td>
+                    <td>${product.brand}</td>
+                    <td>${product.name}</td>
+                    <td>${product.categories}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-secondary btn-sm edit-btn" data-id="${product.id}">
+                            <i class="fas fa-edit"></i> تعديل
+                        </button>
+                        <button class="btn btn-danger btn-sm delete-btn" data-id="${product.id}">
+                            <i class="fas fa-trash"></i> حذف
+                        </button>
+                    </td>
+                `;
+                productsTableBody.appendChild(row);
+            });
+            
+            // Add event listeners to buttons
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    editProduct(btn.getAttribute('data-id'));
+                });
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    deleteProduct(btn.getAttribute('data-id'));
+                });
+            });
+        }
+        
+        // Generate JavaScript Code for Products-Solutions.html - تعريف الدالة أولاً
+        function updateCodeOutput() {
+            const jsCode = `
+// محتوى ملف products.json الحالي:
+
+{
+    "products": ${JSON.stringify(products, null, 4)}
+}
+`;
+            codeOutput.value = jsCode;
+        }
+
+        // Save Products to localStorage - تعريف الدالة أولاً
+        function saveProductsToStorage() {
+            localStorage.setItem('ultraSolarProducts', JSON.stringify(products));
+            // حفظ تلقائي للملف إذا كان التلقائي مفعل
+            if (autoSaveEnabled && fileHandle) {
+                saveDirectlyToFile(false); // عدم إظهار رسالة نجاح
+            }
+        }
+        
+        // تحديث واجهة المستخدم لتعكس حالة الحفظ التلقائي
+        function updateAutoSaveUI() {
+            const autoSaveStatus = document.getElementById('autoSaveStatus');
+            if (autoSaveStatus) {
+                autoSaveStatus.textContent = autoSaveEnabled ? 'مفعل' : 'معطل';
+                autoSaveStatus.className = autoSaveEnabled ? 'success' : 'error';
+            }
+            
+            const autoSaveToggle = document.getElementById('autoSaveToggle');
+            if (autoSaveToggle) {
+                autoSaveToggle.textContent = autoSaveEnabled ? 'تعطيل الحفظ التلقائي' : 'تفعيل الحفظ التلقائي';
+            }
+        }
+        
+        // إضافة عناصر واجهة المستخدم الجديدة
+        document.addEventListener('DOMContentLoaded', function() {
+            // إضافة معلومات حالة الحفظ التلقائي
+            const exportBtnParent = exportBtn.parentNode;
+            
+            // أضف زر فتح ملف إلى المنطقة العلوية للواجهة
+            const topActionsDiv = document.createElement('div');
+            topActionsDiv.className = 'top-actions';
+            topActionsDiv.style.marginBottom = '15px';
+            topActionsDiv.style.padding = '10px';
+            topActionsDiv.style.backgroundColor = '#f8f9fa';
+            topActionsDiv.style.borderRadius = '4px';
+            topActionsDiv.style.display = 'flex';
+            topActionsDiv.style.alignItems = 'center';
+            
+            const fileActionsDiv = document.createElement('div');
+            fileActionsDiv.style.display = 'flex';
+            fileActionsDiv.style.gap = '10px';
+            fileActionsDiv.style.marginRight = 'auto';
+            
+            // إضافة زر فتح ملف
+            const openFileBtn = document.createElement('button');
+            openFileBtn.id = 'openFileBtn';
+            openFileBtn.className = 'btn btn-primary';
+            openFileBtn.innerHTML = '<i class="fas fa-folder-open"></i> فتح ملف JSON';
+            
+            // إضافة زر الحفظ المباشر
+            const saveToFileBtn = document.createElement('button');
+            saveToFileBtn.id = 'saveToFileBtn';
+            saveToFileBtn.className = 'btn btn-success';
+            saveToFileBtn.innerHTML = '<i class="fas fa-save"></i> حفظ في الملف';
+            
+            // إضافة زر تبديل الحفظ التلقائي
+            const autoSaveToggle = document.createElement('button');
+            autoSaveToggle.id = 'autoSaveToggle';
+            autoSaveToggle.className = 'btn btn-secondary';
+            autoSaveToggle.innerHTML = autoSaveEnabled ? 'تعطيل الحفظ التلقائي' : 'تفعيل الحفظ التلقائي';
+            
+            // إضافة حالة الملف والحفظ التلقائي
+            const fileStatusDiv = document.createElement('div');
+            fileStatusDiv.style.display = 'flex';
+            fileStatusDiv.style.alignItems = 'center';
+            fileStatusDiv.style.gap = '15px';
+            fileStatusDiv.style.marginLeft = 'auto';
+            
+            fileStatusDiv.innerHTML = `
+                <div>
+                    <strong>حالة الملف:</strong> 
+                    <span id="fileStatus" class="error">غير متصل</span>
+                </div>
+                <div>
+                    <strong>الحفظ التلقائي:</strong> 
+                    <span id="autoSaveStatus" class="${autoSaveEnabled ? 'success' : 'error'}">${autoSaveEnabled ? 'مفعل' : 'معطل'}</span>
+                </div>
+            `;
+            
+            fileActionsDiv.appendChild(openFileBtn);
+            fileActionsDiv.appendChild(saveToFileBtn);
+            fileActionsDiv.appendChild(autoSaveToggle);
+            
+            topActionsDiv.appendChild(fileActionsDiv);
+            topActionsDiv.appendChild(fileStatusDiv);
+            
+            // إضافة العناصر إلى واجهة المستخدم
+            const adminContainer = document.querySelector('.admin-container');
+            adminContainer.insertBefore(topActionsDiv, adminContainer.firstChild.nextSibling);
+            
+            // إضافة مستمعات الأحداث
+            openFileBtn.addEventListener('click', openExistingFile);
+            saveToFileBtn.addEventListener('click', () => saveDirectlyToFile(true));
+            autoSaveToggle.addEventListener('click', toggleAutoSave);
+            
+            // إضافة مستمع حدث لزر التصدير
+            exportBtn.addEventListener('click', exportProducts);
+            importBtn.addEventListener('click', importProducts);
+            copyCodeBtn.addEventListener('click', copyCode);
+        });
+        
+        // تبديل حالة الحفظ التلقائي
+        function toggleAutoSave() {
+            autoSaveEnabled = !autoSaveEnabled;
+            updateAutoSaveUI();
+            showStatus(autoSaveEnabled ? 'تم تفعيل الحفظ التلقائي' : 'تم تعطيل الحفظ التلقائي', autoSaveEnabled ? 'success' : 'error');
+        }
+        
+        // تحديث حالة الملف
+        function updateFileStatus(connected = false, filePath = '') {
+            const fileStatus = document.getElementById('fileStatus');
+            if (fileStatus) {
+                if (connected) {
+                    fileStatus.textContent = `متصل (${filePath})`;
+                    fileStatus.className = 'success';
+                } else {
+                    fileStatus.textContent = 'غير متصل';
+                    fileStatus.className = 'error';
+                }
+            }
+        }
+        
+        // Export Products - تعريف الدالة أولاً
+        function exportProducts() {
+            const dataObj = {
+                products: products
+            };
+            const dataStr = JSON.stringify(dataObj, null, 4);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'products.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showStatus('تم تصدير البيانات بنجاح، قم بوضع الملف في مجلد data داخل مشروعك', 'success');
+        }
+        
+        // Tab Navigation
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load products from JSON file - تصحيح المسار
+            fetch('data/products.json')
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.products && Array.isArray(data.products)) {
+                        products = data.products;
+                        // إضافة هوية (ID) للمنتجات القديمة إذا لم تكن موجودة
+                        products.forEach(product => {
+                            if (!product.id) {
+                                product.id = Date.now().toString() + Math.random().toString(36).substr(2, 5);
+                            }
+                        });
+                        renderProductsTable();
+                        updateCodeOutput();
+                        showStatus('تم تحميل المنتجات بنجاح من ملف JSON', 'success');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading products:', error);
+                    showStatus('لم يتم العثور على ملف products.json. سيتم إنشاء منتجات جديدة.', 'error');
+                    // Fallback to localStorage if JSON file can't be loaded
+                    products = JSON.parse(localStorage.getItem('ultraSolarProducts')) || [];
+                    renderProductsTable();
+                    updateCodeOutput();
+                });
+            
+            // Authentication
+            loginBtn.addEventListener('click', login);
+            logoutBtn.addEventListener('click', logout);
+            
+            // Check if already logged in
+            if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+                showAdminDashboard();
+            }
+            
+            // Tab Navigation
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    activateTab(tabId);
+                });
+            });
+            
+            // Form Submissions
+            productForm.addEventListener('submit', saveProduct);
+            cancelEditBtn.addEventListener('click', cancelEdit);
+            
+            // Search Functionality
+            searchProducts.addEventListener('input', filterProducts);
+            
+            // Image Preview
+            imagePathInput.addEventListener('input', updateImagePreview);
+            
+            // Load Products Table
+            renderProductsTable();
+            updateCodeOutput();
+        });
+        
+        // دالة حفظ الملف مباشرة باستخدام File System Access API إذا كان متاحًا
+        async function saveDirectlyToFile(showSuccessMessage = true) {
+            const jsonContent = JSON.stringify({ products: products }, null, 4);
+            
+            try {
+                // التحقق من دعم API ملفات النظام
+                if ('showSaveFilePicker' in window) {
+                    // إذا لم يكن هناك مقبض ملف مفتوح، نطلب من المستخدم اختيار موقع الحفظ
+                    if (!fileHandle) {
+                        fileHandle = await window.showSaveFilePicker({
+                            suggestedName: 'products.json',
+                            types: [{
+                                description: 'JSON Files',
+                                accept: { 'application/json': ['.json'] }
+                            }]
+                        });
+                        
+                        // تحديث حالة الملف
+                        updateFileStatus(true, fileHandle.name);
+                    }
+                    
+                    // الكتابة إلى الملف
+                    const writable = await fileHandle.createWritable();
+                    await writable.write(jsonContent);
+                    await writable.close();
+                    
+                    if (showSuccessMessage) {
+                        showStatus('تم حفظ الملف بنجاح!', 'success');
+                    }
+                } else {
+                    // للمتصفحات التي لا تدعم API ملفات النظام، نقدم طريقة التنزيل التقليدية
+                    const blob = new Blob([jsonContent], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'products.json';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                    
+                    if (showSuccessMessage) {
+                        showStatus('تم تنزيل الملف. يرجى استبدال ملف products.json الحالي به.', 'success');
+                    }
+                }
+            } catch (error) {
+                console.error('خطأ في حفظ الملف:', error);
+                if (showSuccessMessage) {
+                    showStatus('حدث خطأ أثناء محاولة حفظ الملف: ' + error.message, 'error');
+                }
+            }
+        }
+        
+        // دالة فتح ملف موجود باستخدام File System Access API
+        async function openExistingFile() {
+            try {
+                if ('showOpenFilePicker' in window) {
+                    const [handle] = await window.showOpenFilePicker({
+                        types: [{
+                            description: 'JSON Files',
+                            accept: { 'application/json': ['.json'] }
+                        }],
+                        multiple: false
+                    });
+                    
+                    fileHandle = handle;
+                    const file = await handle.getFile();
+                    const contents = await file.text();
+                    
+                    try {
+                        const data = JSON.parse(contents);
+                        if (data && data.products && Array.isArray(data.products)) {
+                            products = data.products;
+                            renderProductsTable();
+                            updateCodeOutput();
+                            // تحديث حالة الملف
+                            updateFileStatus(true, fileHandle.name);
+                            showStatus('تم فتح الملف بنجاح وتحميل ' + products.length + ' منتج', 'success');
+                        } else {
+                            showStatus('الملف لا يحتوي على بنية منتجات صالحة', 'error');
+                        }
+                    } catch (parseError) {
+                        showStatus('خطأ في تحليل ملف JSON: ' + parseError.message, 'error');
+                    }
+                } else {
+                    showStatus('متصفحك لا يدعم هذه الميزة. استخدم زر الاستيراد بدلاً من ذلك.', 'error');
+                }
+            } catch (error) {
+                console.error('خطأ في فتح الملف:', error);
+                showStatus('تم إلغاء فتح الملف أو حدث خطأ: ' + error.message, 'error');
+            }
+        }
+        
+        // Login Function
+        function login() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                showAdminDashboard();
+            } else {
+                alert('كلمة المرور غير صحيحة');
+            }
+        }
+        
+        // Logout Function
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            authScreen.style.display = 'block';
+            adminDashboard.style.display = 'none';
+        }
+        
+        // Show Admin Dashboard
+        function showAdminDashboard() {
+            authScreen.style.display = 'none';
+            adminDashboard.style.display = 'block';
+        }
+        
+        // Tab Navigation
+        function activateTab(tabId) {
+            // Deactivate all tabs
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Activate selected tab
+            document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+        
+        // Save Product
+        function saveProduct(e) {
+            e.preventDefault();
+            
+            const productId = document.getElementById('productId').value;
+            const newProduct = {
+                id: productId || Date.now().toString() + Math.random().toString(36).substr(2, 5),
+                categories: document.getElementById('categories').value,
+                imagePath: document.getElementById('imagePath').value,
+                imageAlt: document.getElementById('imageAlt').value,
+                badgeType: document.getElementById('badgeType').value,
+                badgeIcon: document.getElementById('badgeIcon').value,
+                badgeText: document.getElementById('badgeText').value,
+                brand: document.getElementById('brand').value,
+                name: document.getElementById('name').value,
+                descriptionAr: document.getElementById('descriptionAr').value,
+                descriptionEn: document.getElementById('descriptionEn').value
+            };
+            
+            if (productId) {
+                // Update existing product
+                const index = products.findIndex(p => p.id === productId);
+                if (index !== -1) {
+                    products[index] = newProduct;
+                    showStatus('تم تحديث المنتج بنجاح', 'success');
+                }
+            } else {
+                // Add new product
+                products.push(newProduct);
+                showStatus('تم إضافة المنتج بنجاح', 'success');
+            }
+            
+            // Save to localStorage and potentially to file
+            saveProductsToStorage();
+            
+            // Reset form and refresh table
+            resetForm();
+            renderProductsTable();
+            updateCodeOutput();
+            
+            // Switch to products list tab
+            activateTab('productsList');
+        }
+        
+        // Delete Product
+        function deleteProduct(productId) {
+            if (confirm('هل أنت متأكد من حذف هذا المنتج؟')) {
+                products = products.filter(p => p.id !== productId);
+                saveProductsToStorage();
+                renderProductsTable();
+                updateCodeOutput();
+                showStatus('تم حذف المنتج بنجاح', 'success');
+            }
+        }
+        
+        // Edit Product
+        function editProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                document.getElementById('productFormTitle').textContent = 'تعديل المنتج';
+                document.getElementById('productId').value = product.id;
+                document.getElementById('categories').value = product.categories;
+                document.getElementById('imagePath').value = product.imagePath;
+                document.getElementById('imageAlt').value = product.imageAlt;
+                document.getElementById('badgeType').value = product.badgeType;
+                document.getElementById('badgeIcon').value = product.badgeIcon;
+                document.getElementById('badgeText').value = product.badgeText;
+                document.getElementById('brand').value = product.brand;
+                document.getElementById('name').value = product.name;
+                document.getElementById('descriptionAr').value = product.descriptionAr;
+                document.getElementById('descriptionEn').value = product.descriptionEn;
+                
+                // Show cancel button and update image preview
+                cancelEditBtn.style.display = 'inline-block';
+                updateImagePreview();
+                
+                // Switch to add/edit tab
+                activateTab('addProduct');
+            }
+        }
+        
+        // Reset Form
+        function resetForm() {
+            document.getElementById('productFormTitle').textContent = 'إضافة منتج جديد';
+            document.getElementById('productId').value = '';
+            productForm.reset();
+            cancelEditBtn.style.display = 'none';
+            imagePreview.style.display = 'none';
+        }
+        
+        // Cancel Edit
+        function cancelEdit() {
+            resetForm();
+            activateTab('productsList');
+        }
+        
+        // Filter Products
+        function filterProducts() {
+            const searchTerm = searchProducts.value.toLowerCase();
+            const filteredProducts = products.filter(product => {
+                return (
+                    product.brand.toLowerCase().includes(searchTerm) ||
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.categories.toLowerCase().includes(searchTerm)
+                );
+            });
+            
+            productsTableBody.innerHTML = '';
+            
+            if (filteredProducts.length === 0) {
+                productsTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center;">لا توجد نتائج مطابقة</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            filteredProducts.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <img src="${product.imagePath}" alt="${product.imageAlt}" style="width: 50px; height: 50px; object-fit: cover;">
+                    </td>
+                    <td>${product.brand}</td>
+                    <td>${product.name}</td>
+                    <td>${product.categories}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-secondary btn-sm edit-btn" data-id="${product.id}">
+                            <i class="fas fa-edit"></i> تعديل
+                        </button>
+                        <button class="btn btn-danger btn-sm delete-btn" data-id="${product.id}">
+                            <i class="fas fa-trash"></i> حذف
+                        </button>
+                    </td>
+                `;
+                productsTableBody.appendChild(row);
+            });
+            
+            // Add event listeners to buttons
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    editProduct(btn.getAttribute('data-id'));
+                });
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    deleteProduct(btn.getAttribute('data-id'));
+                });
+            });
+        }
+        
+        // Update Image Preview
+        function updateImagePreview() {
+            const imagePath = imagePathInput.value.trim();
+            if (imagePath) {
+                imagePreview.src = imagePath;
+                imagePreview.style.display = 'block';
+                
+                // Handle image loading error
+                imagePreview.onerror = function() {
+                    imagePreview.src = 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>';
+                };
+                
+                imagePreview.onload = function() {
+                    imagePreview.style.display = 'block';
+                };
+            } else {
+                imagePreview.style.display = 'none';
+            }
+        }
+        
+        // Import Products - تحسين استيراد الملفات
+        function importProducts() {
+            const file = importFile.files[0];
+            if (!file) {
+                showStatus('يرجى اختيار ملف للاستيراد', 'error');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data && data.products && Array.isArray(data.products)) {
+                        if (confirm(`سيتم استيراد ${data.products.length} منتج. هل تريد الاستمرار؟`)) {
+                            // إضافة هوية (ID) للمنتجات المستوردة إذا لم تكن موجودة
+                            data.products.forEach(product => {
+                                if (!product.id) {
+                                    product.id = Date.now().toString() + Math.random().toString(36).substr(2, 5);
+                                }
+                            });
+                            products = data.products;
+                            saveProductsToStorage();
+                            renderProductsTable();
+                            updateCodeOutput();
+                            showStatus('تم استيراد البيانات بنجاح', 'success');
+                        }
+                    } else {
+                        showStatus('بنية الملف غير صالحة، يجب أن يحتوي على مصفوفة products', 'error');
+                    }
+                } catch (error) {
+                    showStatus('خطأ في قراءة الملف: ' + error.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+        
+        // Copy Code to Clipboard
+        function copyCode() {
+            codeOutput.select();
+            document.execCommand('copy');
+            showStatus('تم نسخ الكود بنجاح', 'success');
+        }
+    </script>
+</body>
+</html>
