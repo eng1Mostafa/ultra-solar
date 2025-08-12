@@ -148,7 +148,7 @@ html[lang="ar"] .category-content .btn { align-self: flex-end; }
     .stats-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; }
 }
 @media (max-width: 768px) {
-    .prod-sol-grid, .why-us-grid, .stats-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .prod-sol-grid, .why-us-grid, .stats-grid, .blogs-grid { grid-template-columns: 1fr; }
     .problem-section p { font-size: 1.1rem; }
 }
 /* --- END OF FILE home.css --- */

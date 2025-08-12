@@ -45,8 +45,8 @@ const chatbotFAQs = {
     { q: { ar: 'ممكن أشارك بمقال أو تجربة؟', en: 'Can I contribute an article or experience?' }, a: { ar: 'أكيد! ابعتلنا تجربتك أو مقالك وفريقنا يراجعه.', en: 'Absolutely! Send us your experience or article and our team will review it.' } },
     { q: { ar: 'هل فيه جديد دايمًا في المدونة؟', en: 'Is there always something new on the blog?' }, a: { ar: 'بنحدث المدونة باستمرار بكل جديد في المجال.', en: 'We constantly update the blog with the latest in the field.' } },
   ],
-  'testimonials.html': [
-    { q: { ar: 'آراء العملاء هنا حقيقية؟', en: 'Are the testimonials here real?' }, a: { ar: 'كل الآراء من عملاء فعليين جربوا خدماتنا ومنتجاتنا.', en: 'All testimonials are from real clients who have tried our services and products.' } },
+  'blog.html': [
+    { q: { ar: 'آراء العملاء هنا حقيقية؟', en: 'Are the blogs here real?' }, a: { ar: 'كل الآراء من عملاء فعليين جربوا خدماتنا ومنتجاتنا.', en: 'All blogs are from real clients who have tried our services and products.' } },
     { q: { ar: 'إزاي أقدر أشارك رأيي؟', en: 'How can I share my feedback?' }, a: { ar: 'ابعتلنا رأيك أو تقييمك من خلال صفحة تواصل معنا.', en: 'Send us your feedback or review through the Contact Us page.' } },
     { q: { ar: 'هل فيه عملاء كبار اتعاملوا معاكم؟', en: 'Do you have major clients who worked with you?' }, a: { ar: 'آه، عندنا عملاء من أكبر الشركات والمصانع في مصر.', en: 'Yes, we have clients from the largest companies and factories in Egypt.' } },
   ],

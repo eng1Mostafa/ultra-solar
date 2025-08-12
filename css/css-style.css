@@ -296,7 +296,7 @@ html[lang="en"] #date-time-widget { text-align: start; align-items: flex-start; 
 .why-us-grid { display: grid; gap: var(--grid-gap); grid-template-columns: 1fr; }
 @media (min-width: 992px) { .why-us-grid { grid-template-columns: repeat(2, 1fr); } }
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--grid-gap); margin-bottom: 4rem; text-align: center; }
-.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--grid-gap); margin: 2rem 0; }
+.blogs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--grid-gap); margin: 2rem 0; }
 .grid-col-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--grid-gap); }
 .grid-col-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--grid-gap); }
 @media (min-width: 992px) { .grid-col-2-lg { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--grid-gap); } .grid-col-3-lg { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); } }

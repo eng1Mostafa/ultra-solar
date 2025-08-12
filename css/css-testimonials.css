@@ -1,5 +1,5 @@
-/* --- START OF FILE testimonials.css --- */
-/* Styles specific to the testimonials.html page */
+/* --- START OF FILE blogs.css --- */
+/* Styles specific to the blog.html page */
 
 .testimonial-card .client-icon {
     font-size: 5rem;
@@ -8,15 +8,15 @@
     text-align: center;
 }
 
-/* Enhanced Page Header Styles (If unique variations are needed for Testimonials page, add them here) */
-/* Example: .page-header-section.testimonials-header { ... } */
+/* Enhanced Page Header Styles (If unique variations are needed for blogs page, add them here) */
+/* Example: .page-header-section.blogs-header { ... } */
 
-/* --- Testimonials Listing Section --- */
-#testimonials-listing {
+/* --- blogs Listing Section --- */
+#blogs-listing {
     /* Add specific section padding or background if needed */
 }
 
-/* Uses .testimonials-grid from base style.css */
+/* Uses .blogs-grid from base style.css */
 /* Uses .testimonial-card from base style.css */
 
 /* --- CTA Section --- */
@@ -34,13 +34,13 @@
 
 /* --- Pagination Styles --- */
 /* Reuses styles from base style.css .pagination */
-#testimonials-listing .pagination { /* Add margin if needed specifically here */
+#blogs-listing .pagination { /* Add margin if needed specifically here */
     margin-top: 3rem;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .testimonials-grid {
+    .blogs-grid {
         grid-template-columns: 1fr; /* Stack cards */
     }
 }
@@ -70,7 +70,7 @@
   }
 }
 
-/* --- END OF FILE testimonials.css --- */
+/* --- END OF FILE blogs.css --- */
 
 
 
