@@ -1,58 +1,107 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": {
-        "ar": "مقال تجريبي: فوائد الطاقة الشمسية في المناطق الزراعية",
-        "en": "Sample Post: Benefits of Solar Energy in Agricultural Areas"
-      },
-      "content": {
-        "ar": "# مقدمة عن الطاقة الشمسية في الزراعة\n\nتعتبر الطاقة الشمسية من أهم مصادر الطاقة المتجددة التي يمكن استخدامها في المناطق الزراعية. توفر الطاقة الشمسية العديد من المزايا للمزارعين، بما في ذلك خفض تكاليف التشغيل وتقليل الاعتماد على الوقود التقليدي.\n\n* هذه هي النقطة الرئيسية: تساهم الطاقة الشمسية في تحقيق الاستدامة البيئية والاقتصادية للمزارعين على المدى الطويل. *\n\n## استخدامات الطاقة الشمسية في الزراعة\n\nتتعدد استخدامات الطاقة الشمسية في القطاع الزراعي، ومن أهمها:\n\n- تشغيل مضخات الري والصرف\n- تدفئة البيوت المحمية (الصوبات الزراعية)\n- تجفيف المحاصيل الزراعية\n- تشغيل الأنظمة الآلية والمعدات\n- توفير الكهرباء للمزارع البعيدة عن الشبكة\n\n## الفوائد الاقتصادية\n\nتحقق أنظمة الطاقة الشمسية وفورات كبيرة في تكاليف التشغيل على المدى الطويل. رغم أن التكلفة الأولية قد تكون مرتفعة، إلا أن فترة استرداد رأس المال تتراوح عادة بين 3-7 سنوات حسب حجم النظام وطبيعة الاستخدام.\n\n## الاستدامة البيئية\n\nتساهم الطاقة الشمسية في تقليل انبعاثات الكربون وتحسين البصمة البيئية للأنشطة الزراعية. كما أنها تساعد في الحفاظ على الموارد الطبيعية وتقليل الاعتماد على الوقود الأحفوري.",
-        "en": "# Introduction to Solar Energy in Agriculture\n\nSolar energy is one of the most important renewable energy sources that can be used in agricultural areas. Solar energy provides many advantages for farmers, including reducing operating costs and decreasing dependence on traditional fuel.\n\n* Key point: Solar energy contributes to achieving environmental and economic sustainability for farmers in the long term. *\n\n## Uses of Solar Energy in Agriculture\n\nThere are multiple uses for solar energy in the agricultural sector, including:\n\n- Powering irrigation and drainage pumps\n- Heating greenhouses\n- Drying agricultural crops\n- Operating automated systems and equipment\n- Providing electricity for farms far from the grid\n\n## Economic Benefits\n\nSolar energy systems provide significant savings in operating costs over the long term. Although the initial cost may be high, the payback period typically ranges from 3-7 years depending on the size of the system and nature of use.\n\n## Environmental Sustainability\n\nSolar energy helps reduce carbon emissions and improve the environmental footprint of agricultural activities. It also helps conserve natural resources and reduce dependence on fossil fuels."
-      },
-      "author": {
-        "ar": "م. أحمد محمد",
-        "en": "Eng. Ahmed Mohamed"
-      },
-      "date": "2023-12-15",
-      "image": "images/blog/solar-farm.jpg",
-      "tags": ["solar", "agriculture", "renewable energy"]
-    },
-    {
-      "id": 2,
-      "title": {
-        "ar": "كيف تختار أفضل ألواح شمسية لمنزلك؟",
-        "en": "How to Choose the Best Solar Panels for Your Home?"
-      },
-      "content": {
-        "ar": "يعد اختيار الألواح الشمسية المناسبة لمنزلك قرارًا مهمًا يؤثر على كفاءة نظام الطاقة الشمسية لديك وعلى المدخرات المالية على المدى الطويل. في هذا المقال، نستعرض أهم العوامل التي يجب مراعاتها عند اختيار الألواح الشمسية...",
-        "en": "Choosing the right solar panels for your home is an important decision that affects the efficiency of your solar power system and long-term financial savings. In this article, we review the most important factors to consider when choosing solar panels..."
-      },
-      "author": {
-        "ar": "م. سارة علي",
-        "en": "Eng. Sara Ali"
-      },
-      "date": "2024-01-20",
-      "image": "images/blog/home-solar.jpg",
-      "tags": ["solar panels", "residential", "energy efficiency"]
-    },
-    {
-      "id": 3,
-      "title": {
-        "ar": "أنظمة الري بالطاقة الشمسية: الحل المستدام للزراعة الحديثة",
-        "en": "Solar Irrigation Systems: The Sustainable Solution for Modern Agriculture"
-      },
-      "content": {
-        "ar": "تعتبر أنظمة الري بالطاقة الشمسية حلاً مثالياً للمزارعين الذين يبحثون عن طرق مستدامة وفعالة من حيث التكلفة لري محاصيلهم. تستخدم هذه الأنظمة الطاقة الشمسية لتشغيل مضخات المياه، مما يلغي الحاجة إلى الوقود التقليدي ويقلل من التكاليف التشغيلية على المدى الطويل. في هذا المقال، نستكشف مزايا وتطبيقات أنظمة الري بالطاقة الشمسية في الزراعة الحديثة.",
-        "en": "Solar irrigation systems are an ideal solution for farmers looking for sustainable and cost-effective ways to irrigate their crops. These systems use solar energy to power water pumps, eliminating the need for traditional fuel and reducing long-term operational costs. In this article, we explore the advantages and applications of solar irrigation systems in modern agriculture."
-      },
-      "author": {
-        "ar": "م. محمود خالد",
-        "en": "Eng. Mahmoud Khaled"
-      },
-      "date": "2024-04-10",
-      "image": "images/blog/solar-farm.jpg",
-      "tags": ["irrigation", "agriculture", "solar pumps", "sustainability"]
-    }
-  ]
+    "posts": [
+        {
+            "id": 1,
+            "title": {
+                "ar": "مقال تجريبي: فوائد الطاقة الشمسية في المناطق الزراعية",
+                "en": "Sample Post: Benefits of Solar Energy in Agricultural Areas"
+            },
+            "content": {
+                "ar": "# مقدمة عن الطاقة الشمسية في الزراعة\n\nتعتبر الطاقة الشمسية من أهم مصادر الطاقة المتجددة التي يمكن استخدامها في المناطق الزراعية. توفر الطاقة الشمسية العديد من المزايا للمزارعين، بما في ذلك خفض تكاليف التشغيل وتقليل الاعتماد على الوقود التقليدي.\n\n* هذه هي النقطة الرئيسية: تساهم الطاقة الشمسية في تحقيق الاستدامة البيئية والاقتصادية للمزارعين على المدى الطويل. *\n\n## استخدامات الطاقة الشمسية في الزراعة\n\nتتعدد استخدامات الطاقة الشمسية في القطاع الزراعي، ومن أهمها:\n\n- تشغيل مضخات الري والصرف\n- تدفئة البيوت المحمية (الصوبات الزراعية)\n- تجفيف المحاصيل الزراعية\n- تشغيل الأنظمة الآلية والمعدات\n- توفير الكهرباء للمزارع البعيدة عن الشبكة\n\n## الفوائد الاقتصادية\n\nتحقق أنظمة الطاقة الشمسية وفورات كبيرة في تكاليف التشغيل على المدى الطويل. رغم أن التكلفة الأولية قد تكون مرتفعة، إلا أن فترة استرداد رأس المال تتراوح عادة بين 3-7 سنوات حسب حجم النظام وطبيعة الاستخدام.\n\n## الاستدامة البيئية\n\nتساهم الطاقة الشمسية في تقليل انبعاثات الكربون وتحسين البصمة البيئية للأنشطة الزراعية. كما أنها تساعد في الحفاظ على الموارد الطبيعية وتقليل الاعتماد على الوقود الأحفوري.",
+                "en": "# Introduction to Solar Energy in Agriculture\n\nSolar energy is one of the most important renewable energy sources that can be used in agricultural areas. Solar energy provides many advantages for farmers, including reducing operating costs and decreasing dependence on traditional fuel.\n\n* Key point: Solar energy contributes to achieving environmental and economic sustainability for farmers in the long term. *\n\n## Uses of Solar Energy in Agriculture\n\nThere are multiple uses for solar energy in the agricultural sector, including:\n\n- Powering irrigation and drainage pumps\n- Heating greenhouses\n- Drying agricultural crops\n- Operating automated systems and equipment\n- Providing electricity for farms far from the grid\n\n## Economic Benefits\n\nSolar energy systems provide significant savings in operating costs over the long term. Although the initial cost may be high, the payback period typically ranges from 3-7 years depending on the size of the system and nature of use.\n\n## Environmental Sustainability\n\nSolar energy helps reduce carbon emissions and improve the environmental footprint of agricultural activities. It also helps conserve natural resources and reduce dependence on fossil fuels."
+            },
+            "author": {
+                "ar": "م. أحمد محمد",
+                "en": "Eng. Ahmed Mohamed"
+            },
+            "date": "2023-12-15",
+            "image": "images/blog/solar-farm.jpg",
+            "tags": [
+                "solar",
+                "agriculture",
+                "renewable energy"
+            ]
+        },
+        {
+            "id": 2,
+            "title": {
+                "ar": "كيف تختار أفضل ألواح شمسية لمنزلك؟",
+                "en": "How to Choose the Best Solar Panels for Your Home?"
+            },
+            "content": {
+                "ar": "يعد اختيار الألواح الشمسية المناسبة لمنزلك قرارًا مهمًا يؤثر على كفاءة نظام الطاقة الشمسية لديك وعلى المدخرات المالية على المدى الطويل. في هذا المقال، نستعرض أهم العوامل التي يجب مراعاتها عند اختيار الألواح الشمسية...",
+                "en": "Choosing the right solar panels for your home is an important decision that affects the efficiency of your solar power system and long-term financial savings. In this article, we review the most important factors to consider when choosing solar panels..."
+            },
+            "author": {
+                "ar": "م. سارة علي",
+                "en": "Eng. Sara Ali"
+            },
+            "date": "2024-01-20",
+            "image": "images/blog/home-solar.jpg",
+            "tags": [
+                "solar panels",
+                "residential",
+                "energy efficiency"
+            ]
+        },
+        {
+            "id": 3,
+            "title": {
+                "ar": "أنظمة الري بالطاقة الشمسية: الحل المستدام للزراعة الحديثة",
+                "en": "Solar Irrigation Systems: The Sustainable Solution for Modern Agriculture"
+            },
+            "content": {
+                "ar": "تعتبر أنظمة الري بالطاقة الشمسية حلاً مثالياً للمزارعين الذين يبحثون عن طرق مستدامة وفعالة من حيث التكلفة لري محاصيلهم. تستخدم هذه الأنظمة الطاقة الشمسية لتشغيل مضخات المياه، مما يلغي الحاجة إلى الوقود التقليدي ويقلل من التكاليف التشغيلية على المدى الطويل. في هذا المقال، نستكشف مزايا وتطبيقات أنظمة الري بالطاقة الشمسية في الزراعة الحديثة.",
+                "en": "Solar irrigation systems are an ideal solution for farmers looking for sustainable and cost-effective ways to irrigate their crops. These systems use solar energy to power water pumps, eliminating the need for traditional fuel and reducing long-term operational costs. In this article, we explore the advantages and applications of solar irrigation systems in modern agriculture."
+            },
+            "author": {
+                "ar": "م. محمود خالد",
+                "en": "Eng. Mahmoud Khaled"
+            },
+            "date": "2024-04-10",
+            "image": "images/blog/solar-farm.jpg",
+            "tags": [
+                "irrigation",
+                "agriculture",
+                "solar pumps",
+                "sustainability"
+            ]
+        },
+        {
+            "id": "4",
+            "title": {
+                "ar": "asdadsasd",
+                "en": "asdsadasd"
+            },
+            "content": {
+                "ar": "سييشبيشببيبلقثفقفقافاثفافا",
+                "en": "adsafsdggfdgsfthht"
+            },
+            "author": {
+                "ar": "asdasdas",
+                "en": "asddsaasddas"
+            },
+            "date": "2025-08-15",
+            "image": "images/products/home-solar.jpg",
+            "tags": []
+        },
+        {
+            "id": "5",
+            "title": {
+                "ar": "asdasdasd",
+                "en": "asdasdasd"
+            },
+            "content": {
+                "ar": "asdasdasd",
+                "en": "asdasdasd"
+            },
+            "author": {
+                "ar": "asdasdasd",
+                "en": "asdasdasd"
+            },
+            "date": "2025-08-15",
+            "image": "images/products/home-solar.jpg",
+            "tags": []
+        }
+    ]
 }

@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المدونة | Ultra Solar Egypt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/css-style.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f5f7fa;
+            padding: 0;
+            margin: 0;
+        }
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .admin-header {
+            background-color: #00695c;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-panel {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .auth-screen {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Cairo', sans-serif;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background-color: #00695c;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #607d8b;
+            color: white;
+        }
+        .btn-danger {
+            background-color: #d32f2f;
+            color: white;
+        }
+        .btn-success {
+            background-color: #2e7d32;
+            color: white;
+        }
+        .posts-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .posts-table th, .posts-table td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #eee;
+        }
+        .posts-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #eee;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+        }
+        .tab-button.active {
+            background-color: #00695c;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .image-preview {
+            max-width: 100px;
+            max-height: 100px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+        #statusMessage {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
+        .tag {
+            background-color: #e0f2f1;
+            color: #00695c;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+        }
+        .tag .remove-tag {
+            margin-right: 5px;
+            cursor: pointer;
+            color: #00695c;
+        }
+        .tag-input {
+            display: flex;
+            gap: 10px;
+        }
+        .content-textarea {
+            min-height: 200px;
+            font-family: 'Cairo', sans-serif;
+        }
+        .post-date-preview {
+            font-weight: normal;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        .character-count {
+            font-size: 0.8rem;
+            color: #666;
+            text-align: left;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen (Initially Visible) -->
+    <div id="authScreen" class="auth-screen">
+        <h2>إدارة المدونة</h2>
+        <p>يرجى إدخال كلمة المرور للدخول</p>
+        <div class="form-group">
+            <input type="password" id="adminPassword" class="form-control" placeholder="كلمة المرور">
+        </div>
+        <button id="loginBtn" class="btn btn-primary">دخول</button>
+    </div>
+
+    <!-- Admin Dashboard (Initially Hidden) -->
+    <div id="adminDashboard" style="display: none;">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>إدارة المدونة</h1>
+                <button id="logoutBtn" class="btn btn-secondary">تسجيل خروج</button>
+            </div>
+
+            <div id="statusMessage"></div>
+
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="postsList">قائمة المقالات</button>
+                <button class="tab-button" data-tab="addPost">إضافة مقال جديد</button>
+                <button class="tab-button" data-tab="importExport">استيراد / تصدير البيانات</button>
+            </div>
+
+            <!-- Posts List Tab -->
+            <div id="postsList" class="tab-content active admin-panel">
+                <div class="form-group">
+                    <input type="text" id="searchPosts" class="form-control" placeholder="بحث عن مقال...">
+                </div>
+                <div class="table-container">
+                    <table class="posts-table">
+                        <thead>
+                            <tr>
+                                <th>الصورة</th>
+                                <th>العنوان</th>
+                                <th>الكاتب</th>
+                                <th>التاريخ</th>
+                                <th>الوسوم</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="postsTableBody">
+                            <!-- Posts will be loaded here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Add/Edit Post Tab -->
+            <div id="addPost" class="tab-content admin-panel">
+                <h2 id="postFormTitle">إضافة مقال جديد</h2>
+                <form id="postForm">
+                    <input type="hidden" id="postId">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="titleAr">العنوان (عربي)</label>
+                            <input type="text" id="titleAr" class="form-control" required>
+                            <div class="character-count" id="titleArCount">0 حرف</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="titleEn">العنوان (إنجليزي)</label>
+                            <input type="text" id="titleEn" class="form-control" required>
+                            <div class="character-count" id="titleEnCount">0 characters</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="authorAr">الكاتب (عربي)</label>
+                            <input type="text" id="authorAr" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="authorEn">الكاتب (إنجليزي)</label>
+                            <input type="text" id="authorEn" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">تاريخ النشر</label>
+                            <input type="date" id="date" class="form-control" required>
+                            <div class="post-date-preview" id="datePreview"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagePath">مسار الصورة</label>
+                            <input type="text" id="imagePath" class="form-control" required placeholder="مثال: images/blog/article-image.jpg">
+                            <img id="imagePreview" class="image-preview" style="display: none;">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tags">الوسوم</label>
+                        <div class="tag-input">
+                            <input type="text" id="tagInput" class="form-control" placeholder="أضف وسمًا ثم اضغط Enter">
+                            <button type="button" id="addTagBtn" class="btn btn-secondary">إضافة</button>
+                        </div>
+                        <div class="tags-container" id="tagsContainer">
+                            <!-- Tags will be added here dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contentAr">المحتوى (عربي) - يدعم صيغة Markdown</label>
+                        <textarea id="contentAr" class="form-control content-textarea" rows="8" required></textarea>
+                        <div class="character-count" id="contentArCount">0 حرف</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contentEn">المحتوى (إنجليزي) - يدعم صيغة Markdown</label>
+                        <textarea id="contentEn" class="form-control content-textarea" rows="8" required></textarea>
+                        <div class="character-count" id="contentEnCount">0 characters</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">حفظ المقال</button>
+                        <button type="button" id="cancelEdit" class="btn btn-secondary" style="display: none;">إلغاء التعديل</button>
+                        <button type="button" id="previewBtn" class="btn btn-secondary">معاينة المقال</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Import/Export Tab -->
+            <div id="importExport" class="tab-content admin-panel">
+                <div class="form-group">
+                    <h3>تصدير البيانات</h3>
+                    <p>تنزيل ملف JSON يحتوي على جميع المقالات</p>
+                    <button id="exportBtn" class="btn btn-primary">تصدير البيانات</button>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <h3>استيراد البيانات</h3>
+                    <p>تحميل ملف JSON يحتوي على المقالات</p>
+                    <input type="file" id="importFile" accept=".json">
+                    <button id="importBtn" class="btn btn-primary">استيراد البيانات</button>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <h3>حفظ التغييرات</h3>
+                    <p>قم بحفظ الملف blog-posts.json في مجلد data داخل مشروعك</p>
+                    <textarea id="codeOutput" class="form-control" rows="10" readonly></textarea>
+                    <button id="copyCodeBtn" class="btn btn-secondary">نسخ الكود</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.7); z-index: 1000; overflow: auto;">
+        <div style="background-color: white; margin: 50px auto; padding: 20px; max-width: 800px; border-radius: 8px; position: relative;">
+            <button id="closePreviewBtn" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer;">&times;</button>
+            <div id="previewContent" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Set your password here - change this to something secure!
+        const ADMIN_PASSWORD = "ultrasolar2024";
+        
+        // DOM Elements
+        const authScreen = document.getElementById('authScreen');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const loginBtn = document.getElementById('loginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const postForm = document.getElementById('postForm');
+        const postsTableBody = document.getElementById('postsTableBody');
+        const statusMessage = document.getElementById('statusMessage');
+        const exportBtn = document.getElementById('exportBtn');
+        const importBtn = document.getElementById('importBtn');
+        const importFile = document.getElementById('importFile');
+        const codeOutput = document.getElementById('codeOutput');
+        const copyCodeBtn = document.getElementById('copyCodeBtn');
+        const searchPosts = document.getElementById('searchPosts');
+        const imagePathInput = document.getElementById('imagePath');
+        const imagePreview = document.getElementById('imagePreview');
+        const cancelEditBtn = document.getElementById('cancelEdit');
+        const tagInput = document.getElementById('tagInput');
+        const addTagBtn = document.getElementById('addTagBtn');
+        const tagsContainer = document.getElementById('tagsContainer');
+        const previewBtn = document.getElementById('previewBtn');
+        const previewModal = document.getElementById('previewModal');
+        const closePreviewBtn = document.getElementById('closePreviewBtn');
+        const previewContent = document.getElementById('previewContent');
+        const dateInput = document.getElementById('date');
+        const datePreview = document.getElementById('datePreview');
+        
+        // Word count elements
+        const titleAr = document.getElementById('titleAr');
+        const titleEn = document.getElementById('titleEn');
+        const contentAr = document.getElementById('contentAr');
+        const contentEn = document.getElementById('contentEn');
+        const titleArCount = document.getElementById('titleArCount');
+        const titleEnCount = document.getElementById('titleEnCount');
+        const contentArCount = document.getElementById('contentArCount');
+        const contentEnCount = document.getElementById('contentEnCount');
+        
+        // Posts Array - Load from localStorage if exists
+        let posts = [];
+        // مسار ومقبض الملف
+        let fileHandle = null;
+        let autoSaveEnabled = true; // تفعيل الحفظ التلقائي بشكل افتراضي
+        let currentTags = [];
+
+        // Show Status Message
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = type;
+            statusMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Render Posts Table
+        function renderPostsTable() {
+            postsTableBody.innerHTML = '';
+            
+            if (posts.length === 0) {
+                postsTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center;">لا توجد مقالات حالياً</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            // Sort posts by date (newest first)
+            const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            sortedPosts.forEach(post => {
+                const row = document.createElement('tr');
+                const currentLang = document.documentElement.lang || 'ar';
+                const title = post.title[currentLang] || post.title.ar || post.title.en || 'بدون عنوان';
+                const author = post.author[currentLang] || post.author.ar || post.author.en || 'بدون كاتب';
+                
+                // Format date
+                const dateObj = new Date(post.date);
+                const formattedDate = new Intl.DateTimeFormat('ar-EG', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                }).format(dateObj);
+                
+                row.innerHTML = `
+                    <td>
+                        <img src="${post.image}" alt="${title}" style="width: 50px; height: 50px; object-fit: cover;">
+                    </td>
+                    <td>${title}</td>
+                    <td>${author}</td>
+                    <td>${formattedDate}</td>
+                    <td>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(' ')}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-secondary btn-sm edit-btn" data-id="${post.id}">
+                            <i class="fas fa-edit"></i> تعديل
+                        </button>
+                        <button class="btn btn-danger btn-sm delete-btn" data-id="${post.id}">
+                            <i class="fas fa-trash"></i> حذف
+                        </button>
+                    </td>
+                `;
+                postsTableBody.appendChild(row);
+            });
+            
+            // Add event listeners to buttons
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    editPost(btn.getAttribute('data-id'));
+                });
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    deletePost(btn.getAttribute('data-id'));
+                });
+            });
+        }
+        
+        // Generate JSON Code Output
+        function updateCodeOutput() {
+            const jsCode = `
+// محتوى ملف blog-posts.json الحالي:
+
+{
+    "posts": ${JSON.stringify(posts, null, 4)}
+}
+`;
+            codeOutput.value = jsCode;
+        }
+
+        // Save Posts to localStorage
+        function savePostsToStorage() {
+            localStorage.setItem('ultraSolarBlogPosts', JSON.stringify(posts));
+            // حفظ تلقائي للملف إذا كان التلقائي مفعل
+            if (autoSaveEnabled && fileHandle) {
+                saveDirectlyToFile(false); // عدم إظهار رسالة نجاح
+            }
+        }
+        
+        // Update autoSave UI
+        function updateAutoSaveUI() {
+            const autoSaveStatus = document.getElementById('autoSaveStatus');
+            if (autoSaveStatus) {
+                autoSaveStatus.textContent = autoSaveEnabled ? 'مفعل' : 'معطل';
+                autoSaveStatus.className = autoSaveEnabled ? 'success' : 'error';
+            }
+            
+            const autoSaveToggle = document.getElementById('autoSaveToggle');
+            if (autoSaveToggle) {
+                autoSaveToggle.textContent = autoSaveEnabled ? 'تعطيل الحفظ التلقائي' : 'تفعيل الحفظ التلقائي';
+            }
+        }
+
+        // Handle tags
+        function renderTags() {
+            tagsContainer.innerHTML = '';
+            currentTags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.className = 'tag';
+                tagElement.innerHTML = `
+                    ${tag}
+                    <span class="remove-tag" data-tag="${tag}">&times;</span>
+                `;
+                tagsContainer.appendChild(tagElement);
+            });
+            
+            // Add event listeners to remove tags
+            document.querySelectorAll('.remove-tag').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tag = btn.getAttribute('data-tag');
+                    currentTags = currentTags.filter(t => t !== tag);
+                    renderTags();
+                });
+            });
+        }
+        
+        function addTag() {
+            const tag = tagInput.value.trim();
+            if (tag && !currentTags.includes(tag)) {
+                currentTags.push(tag);
+                tagInput.value = '';
+                renderTags();
+            }
+        }
+        
+        // Update character counts
+        function updateCharacterCount(element, countElement, isArabic) {
+            const count = element.value.length;
+            countElement.textContent = isArabic ? `${count} حرف` : `${count} characters`;
+        }
+        
+        // Update date preview
+        function updateDatePreview() {
+            if (dateInput.value) {
+                const date = new Date(dateInput.value);
+                const arDate = new Intl.DateTimeFormat('ar-EG', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }).format(date);
+                
+                const enDate = new Intl.DateTimeFormat('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }).format(date);
+                
+                datePreview.innerHTML = `
+                    <div>عربي: ${arDate}</div>
+                    <div>English: ${enDate}</div>
+                `;
+            } else {
+                datePreview.innerHTML = '';
+            }
+        }
+        
+        // Add UI elements for file operations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add open file button to top actions
+            const topActionsDiv = document.createElement('div');
+            topActionsDiv.className = 'top-actions';
+            topActionsDiv.style.marginBottom = '15px';
+            topActionsDiv.style.padding = '10px';
+            topActionsDiv.style.backgroundColor = '#f8f9fa';
+            topActionsDiv.style.borderRadius = '4px';
+            topActionsDiv.style.display = 'flex';
+            topActionsDiv.style.alignItems = 'center';
+            
+            const fileActionsDiv = document.createElement('div');
+            fileActionsDiv.style.display = 'flex';
+            fileActionsDiv.style.gap = '10px';
+            fileActionsDiv.style.marginRight = 'auto';
+            
+            // Add open file button
+            const openFileBtn = document.createElement('button');
+            openFileBtn.id = 'openFileBtn';
+            openFileBtn.className = 'btn btn-primary';
+            openFileBtn.innerHTML = '<i class="fas fa-folder-open"></i> فتح ملف JSON';
+            
+            // Add save to file button
+            const saveToFileBtn = document.createElement('button');
+            saveToFileBtn.id = 'saveToFileBtn';
+            saveToFileBtn.className = 'btn btn-success';
+            saveToFileBtn.innerHTML = '<i class="fas fa-save"></i> حفظ في الملف';
+            
+            // Add auto save toggle
+            const autoSaveToggle = document.createElement('button');
+            autoSaveToggle.id = 'autoSaveToggle';
+            autoSaveToggle.className = 'btn btn-secondary';
+            autoSaveToggle.innerHTML = autoSaveEnabled ? 'تعطيل الحفظ التلقائي' : 'تفعيل الحفظ التلقائي';
+            
+            // Add file status and auto save status
+            const fileStatusDiv = document.createElement('div');
+            fileStatusDiv.style.display = 'flex';
+            fileStatusDiv.style.alignItems = 'center';
+            fileStatusDiv.style.gap = '15px';
+            fileStatusDiv.style.marginLeft = 'auto';
+            
+            fileStatusDiv.innerHTML = `
+                <div>
+                    <strong>حالة الملف:</strong> 
+                    <span id="fileStatus" class="error">غير متصل</span>
+                </div>
+                <div>
+                    <strong>الحفظ التلقائي:</strong> 
+                    <span id="autoSaveStatus" class="${autoSaveEnabled ? 'success' : 'error'}">${autoSaveEnabled ? 'مفعل' : 'معطل'}</span>
+                </div>
+            `;
+            
+            fileActionsDiv.appendChild(openFileBtn);
+            fileActionsDiv.appendChild(saveToFileBtn);
+            fileActionsDiv.appendChild(autoSaveToggle);
+            
+            topActionsDiv.appendChild(fileActionsDiv);
+            topActionsDiv.appendChild(fileStatusDiv);
+            
+            // Add to UI
+            const adminContainer = document.querySelector('.admin-container');
+            adminContainer.insertBefore(topActionsDiv, adminContainer.firstChild.nextSibling);
+            
+            // Add event listeners
+            openFileBtn.addEventListener('click', openExistingFile);
+            saveToFileBtn.addEventListener('click', () => saveDirectlyToFile(true));
+            autoSaveToggle.addEventListener('click', toggleAutoSave);
+            
+            // Add event listeners for export and import
+            exportBtn.addEventListener('click', exportPosts);
+            importBtn.addEventListener('click', importPosts);
+            copyCodeBtn.addEventListener('click', copyCode);
+            
+            // Add event listeners for tags
+            addTagBtn.addEventListener('click', addTag);
+            tagInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addTag();
+                }
+            });
+            
+            // Add event listeners for preview
+            previewBtn.addEventListener('click', previewPost);
+            closePreviewBtn.addEventListener('click', () => {
+                previewModal.style.display = 'none';
+            });
+            
+            // Add event listeners for character count
+            titleAr.addEventListener('input', () => updateCharacterCount(titleAr, titleArCount, true));
+            titleEn.addEventListener('input', () => updateCharacterCount(titleEn, titleEnCount, false));
+            contentAr.addEventListener('input', () => updateCharacterCount(contentAr, contentArCount, true));
+            contentEn.addEventListener('input', () => updateCharacterCount(contentEn, contentEnCount, false));
+            
+            // Add event listener for date
+            dateInput.addEventListener('change', updateDatePreview);
+        });
+        
+        // Toggle auto save
+        function toggleAutoSave() {
+            autoSaveEnabled = !autoSaveEnabled;
+            updateAutoSaveUI();
+            showStatus(autoSaveEnabled ? 'تم تفعيل الحفظ التلقائي' : 'تم تعطيل الحفظ التلقائي', autoSaveEnabled ? 'success' : 'error');
+        }
+        
+        // Update file status
+        function updateFileStatus(connected = false, filePath = '') {
+            const fileStatus = document.getElementById('fileStatus');
+            if (fileStatus) {
+                if (connected) {
+                    fileStatus.textContent = `متصل (${filePath})`;
+                    fileStatus.className = 'success';
+                } else {
+                    fileStatus.textContent = 'غير متصل';
+                    fileStatus.className = 'error';
+                }
+            }
+        }
+        
+        // Export Posts
+        function exportPosts() {
+            const dataObj = {
+                posts: posts
+            };
+            const dataStr = JSON.stringify(dataObj, null, 4);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'blog-posts.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showStatus('تم تصدير البيانات بنجاح، قم بوضع الملف في مجلد data داخل مشروعك', 'success');
+        }
+        
+        // Tab Navigation
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load posts from JSON file
+            fetch('data/blog-posts.json')
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.posts && Array.isArray(data.posts)) {
+                        posts = data.posts;
+                        // Add ID to old posts if not present
+                        posts.forEach(post => {
+                            if (!post.id) {
+                                post.id = Date.now().toString() + Math.random().toString(36).substr(2, 5);
+                            }
+                        });
+                        renderPostsTable();
+                        updateCodeOutput();
+                        showStatus('تم تحميل المقالات بنجاح من ملف JSON', 'success');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading posts:', error);
+                    showStatus('لم يتم العثور على ملف blog-posts.json. سيتم إنشاء مقالات جديدة.', 'error');
+                    // Fallback to localStorage if JSON file can't be loaded
+                    posts = JSON.parse(localStorage.getItem('ultraSolarBlogPosts')) || [];
+                    renderPostsTable();
+                    updateCodeOutput();
+                });
+            
+            // Authentication
+            loginBtn.addEventListener('click', login);
+            logoutBtn.addEventListener('click', logout);
+            
+            // Check if already logged in
+            if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+                showAdminDashboard();
+            }
+            
+            // Tab Navigation
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    activateTab(tabId);
+                });
+            });
+            
+            // Form Submissions
+            postForm.addEventListener('submit', savePost);
+            cancelEditBtn.addEventListener('click', cancelEdit);
+            
+            // Search Functionality
+            searchPosts.addEventListener('input', filterPosts);
+            
+            // Image Preview
+            imagePathInput.addEventListener('input', updateImagePreview);
+            
+            // Render Posts Table
+            renderPostsTable();
+            updateCodeOutput();
+        });
+        
+        // Save file directly using File System Access API if available
+        async function saveDirectlyToFile(showSuccessMessage = true) {
+            const jsonContent = JSON.stringify({ posts: posts }, null, 4);
+            
+            try {
+                // Check if File System Access API is supported
+                if ('showSaveFilePicker' in window) {
+                    // If no file handle is open, ask user to choose save location
+                    if (!fileHandle) {
+                        fileHandle = await window.showSaveFilePicker({
+                            suggestedName: 'blog-posts.json',
+                            types: [{
+                                description: 'JSON Files',
+                                accept: { 'application/json': ['.json'] }
+                            }]
+                        });
+                        
+                        // Update file status
+                        updateFileStatus(true, fileHandle.name);
+                    }
+                    
+                    // Write to file
+                    const writable = await fileHandle.createWritable();
+                    await writable.write(jsonContent);
+                    await writable.close();
+                    
+                    if (showSuccessMessage) {
+                        showStatus('تم حفظ الملف بنجاح!', 'success');
+                    }
+                } else {
+                    // For browsers that don't support File System Access API, provide traditional download
+                    const blob = new Blob([jsonContent], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'blog-posts.json';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                    
+                    if (showSuccessMessage) {
+                        showStatus('تم تنزيل الملف. يرجى استبدال ملف blog-posts.json الحالي به.', 'success');
+                    }
+                }
+            } catch (error) {
+                console.error('خطأ في حفظ الملف:', error);
+                if (showSuccessMessage) {
+                    showStatus('حدث خطأ أثناء محاولة حفظ الملف: ' + error.message, 'error');
+                }
+            }
+        }
+        
+        // Open existing file using File System Access API
+        async function openExistingFile() {
+            try {
+                if ('showOpenFilePicker' in window) {
+                    const [handle] = await window.showOpenFilePicker({
+                        types: [{
+                            description: 'JSON Files',
+                            accept: { 'application/json': ['.json'] }
+                        }],
+                        multiple: false
+                    });
+                    
+                    fileHandle = handle;
+                    const file = await handle.getFile();
+                    const contents = await file.text();
+                    
+                    try {
+                        const data = JSON.parse(contents);
+                        if (data && data.posts && Array.isArray(data.posts)) {
+                            posts = data.posts;
+                            renderPostsTable();
+                            updateCodeOutput();
+                            // Update file status
+                            updateFileStatus(true, fileHandle.name);
+                            showStatus('تم فتح الملف بنجاح وتحميل ' + posts.length + ' مقال', 'success');
+                        } else {
+                            showStatus('الملف لا يحتوي على بنية مقالات صالحة', 'error');
+                        }
+                    } catch (parseError) {
+                        showStatus('خطأ في تحليل ملف JSON: ' + parseError.message, 'error');
+                    }
+                } else {
+                    showStatus('متصفحك لا يدعم هذه الميزة. استخدم زر الاستيراد بدلاً من ذلك.', 'error');
+                }
+            } catch (error) {
+                console.error('خطأ في فتح الملف:', error);
+                showStatus('تم إلغاء فتح الملف أو حدث خطأ: ' + error.message, 'error');
+            }
+        }
+        
+        // Login Function
+        function login() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                showAdminDashboard();
+            } else {
+                alert('كلمة المرور غير صحيحة');
+            }
+        }
+        
+        // Logout Function
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            authScreen.style.display = 'block';
+            adminDashboard.style.display = 'none';
+        }
+        
+        // Show Admin Dashboard
+        function showAdminDashboard() {
+            authScreen.style.display = 'none';
+            adminDashboard.style.display = 'block';
+        }
+        
+        // Tab Navigation
+        function activateTab(tabId) {
+            // Deactivate all tabs
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Activate selected tab
+            document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+        
+        // Save Post
+        function savePost(e) {
+            e.preventDefault();
+            
+            const postId = document.getElementById('postId').value;
+            const newPost = {
+                id: postId || Date.now().toString(),
+                title: {
+                    ar: document.getElementById('titleAr').value,
+                    en: document.getElementById('titleEn').value
+                },
+                content: {
+                    ar: document.getElementById('contentAr').value,
+                    en: document.getElementById('contentEn').value
+                },
+                author: {
+                    ar: document.getElementById('authorAr').value,
+                    en: document.getElementById('authorEn').value
+                },
+                date: document.getElementById('date').value,
+                image: document.getElementById('imagePath').value,
+                tags: [...currentTags]
+            };
+            
+            if (postId) {
+                // Update existing post
+                const index = posts.findIndex(p => p.id.toString() === postId.toString());
+                if (index !== -1) {
+                    posts[index] = newPost;
+                    showStatus('تم تحديث المقال بنجاح', 'success');
+                }
+            } else {
+                // Add new post
+                posts.push(newPost);
+                showStatus('تم إضافة المقال بنجاح', 'success');
+            }
+            
+            // Save to localStorage and potentially to file
+            savePostsToStorage();
+            
+            // Reset form and refresh table
+            resetForm();
+            renderPostsTable();
+            updateCodeOutput();
+            
+            // Switch to posts list tab
+            activateTab('postsList');
+        }
+        
+        // Delete Post
+        function deletePost(postId) {
+            if (confirm('هل أنت متأكد من حذف هذا المقال؟')) {
+                posts = posts.filter(p => p.id.toString() !== postId.toString());
+                savePostsToStorage();
+                renderPostsTable();
+                updateCodeOutput();
+                showStatus('تم حذف المقال بنجاح', 'success');
+            }
+        }
+        
+        // Edit Post
+        function editPost(postId) {
+            const post = posts.find(p => p.id.toString() === postId.toString());
+            if (post) {
+                document.getElementById('postFormTitle').textContent = 'تعديل المقال';
+                document.getElementById('postId').value = post.id;
+                document.getElementById('titleAr').value = post.title.ar || '';
+                document.getElementById('titleEn').value = post.title.en || '';
+                document.getElementById('contentAr').value = post.content.ar || '';
+                document.getElementById('contentEn').value = post.content.en || '';
+                document.getElementById('authorAr').value = post.author.ar || '';
+                document.getElementById('authorEn').value = post.author.en || '';
+                document.getElementById('date').value = post.date;
+                document.getElementById('imagePath').value = post.image || '';
+                
+                // Set tags
+                currentTags = [...(post.tags || [])];
+                renderTags();
+                
+                // Update character counts
+                updateCharacterCount(titleAr, titleArCount, true);
+                updateCharacterCount(titleEn, titleEnCount, false);
+                updateCharacterCount(contentAr, contentArCount, true);
+                updateCharacterCount(contentEn, contentEnCount, false);
+                
+                // Update date preview
+                updateDatePreview();
+                
+                // Show cancel button and update image preview
+                cancelEditBtn.style.display = 'inline-block';
+                updateImagePreview();
+                
+                // Switch to add/edit tab
+                activateTab('addPost');
+            }
+        }
+        
+        // Reset Form
+        function resetForm() {
+            document.getElementById('postFormTitle').textContent = 'إضافة مقال جديد';
+            document.getElementById('postId').value = '';
+            postForm.reset();
+            
+            // Reset tags
+            currentTags = [];
+            renderTags();
+            
+            // Reset character counts
+            titleArCount.textContent = '0 حرف';
+            titleEnCount.textContent = '0 characters';
+            contentArCount.textContent = '0 حرف';
+            contentEnCount.textContent = '0 characters';
+            
+            // Reset date preview
+            datePreview.innerHTML = '';
+            
+            // Hide cancel button and image preview
+            cancelEditBtn.style.display = 'none';
+            imagePreview.style.display = 'none';
+        }
+        
+        // Cancel Edit
+        function cancelEdit() {
+            resetForm();
+            activateTab('postsList');
+        }
+        
+        // Filter Posts
+        function filterPosts() {
+            const searchTerm = searchPosts.value.toLowerCase();
+            const filteredPosts = posts.filter(post => {
+                return (
+                    (post.title.ar && post.title.ar.toLowerCase().includes(searchTerm)) ||
+                    (post.title.en && post.title.en.toLowerCase().includes(searchTerm)) ||
+                    (post.content.ar && post.content.ar.toLowerCase().includes(searchTerm)) ||
+                    (post.content.en && post.content.en.toLowerCase().includes(searchTerm)) ||
+                    (post.author.ar && post.author.ar.toLowerCase().includes(searchTerm)) ||
+                    (post.author.en && post.author.en.toLowerCase().includes(searchTerm)) ||
+                    (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+                );
+            });
+            
+            postsTableBody.innerHTML = '';
+            
+            if (filteredPosts.length === 0) {
+                postsTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center;">لا توجد نتائج مطابقة</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            const currentLang = document.documentElement.lang || 'ar';
+            
+            filteredPosts.forEach(post => {
+                const row = document.createElement('tr');
+                const title = post.title[currentLang] || post.title.ar || post.title.en || 'بدون عنوان';
+                const author = post.author[currentLang] || post.author.ar || post.author.en || 'بدون كاتب';
+                
+                // Format date
+                const dateObj = new Date(post.date);
+                const formattedDate = new Intl.DateTimeFormat('ar-EG', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                }).format(dateObj);
+                
+                row.innerHTML = `
+                    <td>
+                        <img src="${post.image}" alt="${title}" style="width: 50px; height: 50px; object-fit: cover;">
+                    </td>
+                    <td>${title}</td>
+                    <td>${author}</td>
+                    <td>${formattedDate}</td>
+                    <td>${(post.tags || []).map(tag => `<span class="tag">${tag}</span>`).join(' ')}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-secondary btn-sm edit-btn" data-id="${post.id}">
+                            <i class="fas fa-edit"></i> تعديل
+                        </button>
+                        <button class="btn btn-danger btn-sm delete-btn" data-id="${post.id}">
+                            <i class="fas fa-trash"></i> حذف
+                        </button>
+                    </td>
+                `;
+                postsTableBody.appendChild(row);
+            });
+            
+            // Add event listeners to buttons
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    editPost(btn.getAttribute('data-id'));
+                });
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    deletePost(btn.getAttribute('data-id'));
+                });
+            });
+        }
+        
+        // Update Image Preview
+        function updateImagePreview() {
+            const imagePath = imagePathInput.value.trim();
+            if (imagePath) {
+                imagePreview.src = imagePath;
+                imagePreview.style.display = 'block';
+                
+                // Handle image loading error
+                imagePreview.onerror = function() {
+                    imagePreview.src = 'data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>';
+                };
+                
+                imagePreview.onload = function() {
+                    imagePreview.style.display = 'block';
+                };
+            } else {
+                imagePreview.style.display = 'none';
+            }
+        }
+        
+        // Preview Post
+        function previewPost(e) {
+            e.preventDefault();
+            
+            // Get current values
+            const titleAr = document.getElementById('titleAr').value;
+            const titleEn = document.getElementById('titleEn').value;
+            const contentAr = document.getElementById('contentAr').value;
+            const contentEn = document.getElementById('contentEn').value;
+            const authorAr = document.getElementById('authorAr').value;
+            const authorEn = document.getElementById('authorEn').value;
+            const date = document.getElementById('date').value;
+            const imagePath = document.getElementById('imagePath').value;
+            
+            // Format date
+            const dateObj = new Date(date);
+            const formattedDateAr = new Intl.DateTimeFormat('ar-EG', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(dateObj);
+            
+            const formattedDateEn = new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(dateObj);
+            
+            // Simple markdown to HTML conversion
+            function markdownToHtml(markdown) {
+                if (!markdown) return '';
+                
+                // Handle headings
+                let html = markdown.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+                html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+                html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+                
+                // Handle bold and italic
+                html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+                html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+                
+                // Handle lists
+                html = html.replace(/^\- (.+)$/gm, '<li>$1</li>');
+                html = html.replace(/<li>(.+)<\/li>\n<li>/g, '<li>$1</li>\n<li>');
+                html = html.replace(/(<li>(.+)<\/li>\n)+/g, '<ul>$&</ul>');
+                
+                // Handle paragraphs (simplistic)
+                html = html.replace(/^(?!<h|<ul|<li)(.+)$/gm, '<p>$1</p>');
+                
+                // Handle line breaks
+                html = html.replace(/\n\n/g, '<br>');
+                
+                return html;
+            }
+            
+            // Create preview content
+            const previewHTML = `
+                <div style="direction: rtl; text-align: right; margin-bottom: 40px;">
+                    <h2>${titleAr}</h2>
+                    <p style="color: #666;">
+                        <span>${authorAr}</span> - 
+                        <span>${formattedDateAr}</span>
+                    </p>
+                    ${imagePath ? `<img src="${imagePath}" alt="${titleAr}" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px;">` : ''}
+                    <div>${markdownToHtml(contentAr)}</div>
+                    <div style="margin-top: 20px;">
+                        ${currentTags.map(tag => `<span style="background-color: #e0f2f1; color: #00695c; padding: 5px 10px; border-radius: 20px; margin-left: 5px;">${tag}</span>`).join(' ')}
+                    </div>
+                </div>
+                <hr style="margin: 30px 0;">
+                <div style="direction: ltr; text-align: left;">
+                    <h2>${titleEn}</h2>
+                    <p style="color: #666;">
+                        <span>${authorEn}</span> - 
+                        <span>${formattedDateEn}</span>
+                    </p>
+                    ${imagePath ? `<img src="${imagePath}" alt="${titleEn}" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px;">` : ''}
+                    <div>${markdownToHtml(contentEn)}</div>
+                    <div style="margin-top: 20px;">
+                        ${currentTags.map(tag => `<span style="background-color: #e0f2f1; color: #00695c; padding: 5px 10px; border-radius: 20px; margin-right: 5px;">${tag}</span>`).join(' ')}
+                    </div>
+                </div>
+            `;
+            
+            // Display preview
+            previewContent.innerHTML = previewHTML;
+            previewModal.style.display = 'block';
+        }
+        
+        // Import Posts
+        function importPosts() {
+            const file = importFile.files[0];
+            if (!file) {
+                showStatus('يرجى اختيار ملف للاستيراد', 'error');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data && data.posts && Array.isArray(data.posts)) {
+                        if (confirm(`سيتم استيراد ${data.posts.length} مقال. هل تريد الاستمرار؟`)) {
+                            // Add ID to imported posts if not present
+                            data.posts.forEach(post => {
+                                if (!post.id) {
+                                    post.id = Date.now().toString() + Math.random().toString(36).substr(2, 5);
+                                }
+                            });
+                            posts = data.posts;
+                            savePostsToStorage();
+                            renderPostsTable();
+                            updateCodeOutput();
+                            showStatus('تم استيراد البيانات بنجاح', 'success');
+                        }
+                    } else {
+                        showStatus('بنية الملف غير صالحة، يجب أن يحتوي على مصفوفة posts', 'error');
+                    }
+                } catch (error) {
+                    showStatus('خطأ في قراءة الملف: ' + error.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+        
+        // Copy Code to Clipboard
+        function copyCode() {
+            codeOutput.select();
+            document.execCommand('copy');
+            showStatus('تم نسخ الكود بنجاح', 'success');
+        }
+    </script>
+</body>
+</html>

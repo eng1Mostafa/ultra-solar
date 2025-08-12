@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Meta Tags (These will be updated dynamically by JavaScript) -->
-    <title>مقال - ultra solar Egypt</title>
-    <meta name="description" content="قراءة المزيد عن موضوعات الطاقة الشمسية والاستدامة في مدونة ultra solar Egypt.">
-    <meta name="keywords" content="الطاقة الشمسية، المقالات التقنية، الاستدامة، التكنولوجيا المتجددة">
+    <!-- SEO Meta Tags (Will be updated dynamically) -->
+    <title>المدونة | Ultra Solar Egypt</title>
+    <meta name="description" content="مقالات تقنية حول الطاقة الشمسية، الاستدامة، وحلول الطاقة البديلة من Ultra Solar Egypt">
+    <meta name="keywords" content="الطاقة الشمسية، المقالات التقنية، الاستدامة، ultra solar">
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,14 +14,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/css-style.css">
-    <link rel="stylesheet" href="css/css-blog.css">
+    <link rel="stylesheet" href="css/css-blogs.css">
     <link rel="stylesheet" href="css/css-chatbot.css">
     <link rel="stylesheet" href="css/css-back-to-top.css">
-    
-    <!-- Markdown parsing -->
+
+    <!-- Markdown Parser -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <!-- Favicon -->
@@ -37,6 +37,176 @@
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
         })();
     </script>
+
+    <style>
+        .blog-post-container {
+            padding: 30px 0;
+        }
+        .blog-post-header {
+            margin-bottom: 25px;
+        }
+        .blog-post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #666;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .blog-post-meta-item {
+            display: flex;
+            align-items: center;
+        }
+        .blog-post-meta-item i {
+            margin-inline-end: 6px;
+        }
+        .blog-post-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .blog-post-content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .blog-post-content h1, 
+        .blog-post-content h2, 
+        .blog-post-content h3 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .blog-post-content p {
+            margin-bottom: 20px;
+        }
+        .blog-post-content ul, 
+        .blog-post-content ol {
+            margin-bottom: 20px;
+            padding-inline-start: 25px;
+        }
+        .blog-post-content li {
+            margin-bottom: 8px;
+        }
+        .blog-post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+        }
+        .blog-post-tag {
+            background-color: #e0f2f1;
+            color: #00695c;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .blog-back-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+        .blog-back-btn:hover {
+            background-color: #e0e0e0;
+        }
+        .blog-back-btn i {
+            margin-inline-end: 8px;
+        }
+        .related-posts {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+        .related-posts-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .error-message {
+            text-align: center;
+            padding: 50px 0;
+        }
+        .error-message i {
+            font-size: 4rem;
+            color: #f44336;
+            margin-bottom: 20px;
+        }
+        .error-message h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .error-message p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        /* Dark mode adjustments */
+        .dark-mode .blog-post-tag {
+            background-color: #263238;
+            color: #80cbc4;
+        }
+        .dark-mode .blog-back-btn {
+            background-color: #333;
+            color: #ddd;
+        }
+        .dark-mode .blog-back-btn:hover {
+            background-color: #424242;
+        }
+        .dark-mode .blog-post-meta {
+            color: #aaa;
+        }
+        .dark-mode .related-posts {
+            border-top-color: #444;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .blog-post-title {
+                font-size: 2rem;
+            }
+            .related-posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Loading state */
+        .loading-indicator {
+            text-align: center;
+            padding: 50px 0;
+        }
+        .loading-indicator i {
+            font-size: 3rem;
+            color: #00695c;
+            animation: spin 1s infinite linear;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-indicator p {
+            margin-top: 15px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
 
@@ -64,70 +234,113 @@
     </div>
 
     <!-- ===== Main Header ===== -->
+        <!-- ===== Main Header ===== -->
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
-                <a href="index.html"><img src="images/Screenshot_1 (1).png" alt="ultra solar Egypt Logo" class="site-logo"></a>
+                <a href="index.html">
+                    <img src="images/Screenshot_1 (1).png" alt="ultra solar Egypt Logo" class="site-logo">
+                </a>
             </div>
             <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
                 <ul>
-                     <li><a href="index.html" ><span class="lang-ar" data-lang-ar="&#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;&#1577;">&#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;&#1577;</span><span class="lang-en" data-lang-en="Home">Home</span></a></li>
+                    <li><a href="index.html" ><span class="lang-ar" data-lang-ar="&#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;&#1577;">&#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;&#1577;</span><span class="lang-en" data-lang-en="Home">Home</span></a></li>
                     <!-- <li><a href="about.html"><span class="lang-ar" data-lang-ar="&#1605;&#1606; &#1606;&#1581;&#1606;&#1567;">&#1605;&#1606; &#1606;&#1581;&#1606;&#1567;</span><span class="lang-en" data-lang-en="About Us">About Us</span></a></li> -->
                     <li><a href="products-solutions.html"><span class="lang-ar" data-lang-ar="&#1575;&#1604;&#1605;&#1606;&#1578;&#1580;&#1575;&#1578; &#1608;&#1575;&#1604;&#1581;&#1604;&#1608;&#1604;">&#1575;&#1604;&#1605;&#1606;&#1578;&#1580;&#1575;&#1578; &#1608;&#1575;&#1604;&#1581;&#1604;&#1608;&#1604;</span><span class="lang-en" data-lang-en="Products &amp; Solutions">Products &amp; Solutions</span></a></li>
                     <li><a href="solar-calculator.html"><span class="lang-ar">&#1581;&#1575;&#1587;&#1576;&#1577; &#1575;&#1604;&#1591;&#1575;&#1602;&#1577;</span><span class="lang-en">Solar Calculator</span></a></li>
                     <!-- <li><a href="services.html"><span class="lang-ar" data-lang-ar="&#1582;&#1583;&#1605;&#1575;&#1578;&#1606;&#1575;">&#1582;&#1583;&#1605;&#1575;&#1578;&#1606;&#1575;</span><span class="lang-en" data-lang-en="Our Services">Our Services</span></a></li> -->
-                    <li><a href="blog.html" class="active" ><span class="lang-ar" data-lang-ar="&#1570;&#1585;&#1575;&#1569; &#1575;&#1604;&#1593;&#1605;&#1604;&#1575;&#1569;">&#1570;&#1585;&#1575;&#1569; &#1575;&#1604;&#1593;&#1605;&#1604;&#1575;&#1569;</span><span class="lang-en" data-lang-en="blogs">blogs</span></a></li>
+                    <li><a href="blog.html" class="active"><span class="lang-ar" data-lang-ar="المدونة">المدونة</span><span class="lang-en" data-lang-en="blogs">blogs</span></a></li>
                     <li><a href="agencies.html"><span class="lang-ar" data-lang-ar="&#1608;&#1603;&#1575;&#1604;&#1575;&#1578;&#1606;&#1575;">&#1608;&#1603;&#1575;&#1604;&#1575;&#1578;&#1606;&#1575;</span><span class="lang-en" data-lang-en="Our Agencies">Our Agencies</span></a></li>
                     <!-- <li><a href="blog.html"><span class="lang-ar" data-lang-ar="&#1575;&#1604;&#1605;&#1583;&#1608;&#1606;&#1577;">&#1575;&#1604;&#1605;&#1583;&#1608;&#1606;&#1577;</span><span class="lang-en" data-lang-en="Blog">Blog</span></a></li> -->
                     <!-- <li><a href="contact.html"><span class="lang-ar" data-lang-ar="&#1578;&#1608;&#1575;&#1589;&#1604; &#1605;&#1593;&#1606;&#1575;">&#1578;&#1608;&#1575;&#1589;&#1604; &#1605;&#1593;&#1606;&#1575;</span><span class="lang-en" data-lang-en="Contact Us">Contact Us</span></a></li> -->
+                
                 </ul>
             </nav>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav"><i class="fas fa-bars"></i></button>
+ 
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
     <!-- ===== Main Content ===== -->
     <main>
-        <section class="section-padding">
+        <section class="blog-post-container">
             <div class="container">
-                <div id="blog-post-container">
-                    <!-- Blog post content will be loaded here dynamically -->
-                    <div class="loading-spinner">
-                        <i class="fas fa-spinner fa-spin fa-3x"></i>
-                        <p class="mt-3">
-                            <span class="lang-ar">جاري تحميل المقال...</span>
-                            <span class="lang-en">Loading article...</span>
-                        </p>
-                    </div>
+                <!-- Loading indicator (initially shown) -->
+                <div id="loading-indicator" class="loading-indicator">
+                    <i class="fas fa-spinner"></i>
+                    <p>
+                        <span class="lang-ar">جاري تحميل المقال...</span>
+                        <span class="lang-en">Loading article...</span>
+                    </p>
                 </div>
                 
-                <div class="blog-navigation mt-5">
-                    <a href="blog.html" class="btn btn-outline-primary">
-                        <i class="fas fa-arrow-left"></i>
+                <!-- Error Message (initially hidden) -->
+                <div id="error-message" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h2>
+                        <span class="lang-ar">عذراً، لم يتم العثور على المقال</span>
+                        <span class="lang-en">Sorry, article not found</span>
+                    </h2>
+                    <p>
+                        <span class="lang-ar">المقال الذي تبحث عنه غير موجود أو تمت إزالته.</span>
+                        <span class="lang-en">The article you're looking for doesn't exist or has been removed.</span>
+                    </p>
+                    <a href="blog.html" class="btn btn-primary">
                         <span class="lang-ar">العودة إلى المدونة</span>
                         <span class="lang-en">Back to Blog</span>
                     </a>
                 </div>
-            </div>
-        </section>
-        
-        <!-- Related Posts Section -->
-        <section class="section-padding bg-light">
-            <div class="container">
-                <h2 class="section-title text-center mb-5">
-                    <span class="lang-ar">مقالات ذات صلة</span>
-                    <span class="lang-en">Related Articles</span>
-                </h2>
-                <div class="blog-posts-grid" id="related-posts-container">
-                    <!-- Related posts will be loaded here dynamically -->
+                
+                <!-- Blog Post Content (initially hidden) -->
+                <div id="blog-post-content" style="display: none;">
+                    <a href="blog.html" class="blog-back-btn">
+                        <i class="fas fa-arrow-right"></i>
+                        <span class="lang-ar">العودة إلى المدونة</span>
+                        <span class="lang-en">Back to Blog</span>
+                    </a>
+                    
+                    <article class="blog-post">
+                        <div class="blog-post-header">
+                            <h1 id="blog-title" class="blog-post-title"></h1>
+                            <div class="blog-post-meta">
+                                <div class="blog-post-meta-item">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span id="blog-date"></span>
+                                </div>
+                                <div class="blog-post-meta-item">
+                                    <i class="far fa-user"></i>
+                                    <span id="blog-author"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <img id="blog-image" class="blog-post-image" alt="">
+                        
+                        <div id="blog-content" class="blog-post-content"></div>
+                        
+                        <div id="blog-tags" class="blog-post-tags"></div>
+                    </article>
+                    
+                    <!-- Related Posts Section -->
+                    <div id="related-posts" class="related-posts">
+                        <h2 class="related-posts-title">
+                            <span class="lang-ar">مقالات ذات صلة</span>
+                            <span class="lang-en">Related Articles</span>
+                        </h2>
+                        <div id="related-posts-grid" class="related-posts-grid"></div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- ===== Enhanced Footer ===== -->
-    <footer class="site-footer-bottom section-padding" id="site-footer">
-        <div class="container">
+    <!-- ===== Footer ===== -->
+    
+        <!-- ===== Enhanced Footer ===== -->
+        <footer class="site-footer-bottom section-padding" id="site-footer">
+            <div class="container">
                  <div class="footer-grid">
                      <div class="footer-about">
                          <div class="footer-logo">
@@ -148,9 +361,9 @@
                          <div class="footer-divider"></div>
                          <ul class="footer-menu">
                              <li><a href="index.html"><i class="fas fa-home"></i> <span class="lang-ar" data-lang-ar="&#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;&#1577;">&#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;&#1577;</span><span class="lang-en" data-lang-en="Home">Home</span></a></li>
-                             <li><a href="about.html"><i class="fas fa-building"></i> <span class="lang-ar" data-lang-ar="&#1593;&#1606; &#1575;&#1604;&#1588;&#1585;&#1603;&#1577;">&#1593;&#1606; &#1575;&#1604;&#1588;&#1585;&#1603;&#1577;</span><span class="lang-en" data-lang-en="About Us">About Us</span></a></li>
+                             <!-- <li><a href="about.html"><i class="fas fa-building"></i> <span class="lang-ar" data-lang-ar="&#1593;&#1606; &#1575;&#1604;&#1588;&#1585;&#1603;&#1577;">&#1593;&#1606; &#1575;&#1604;&#1588;&#1585;&#1603;&#1577;</span><span class="lang-en" data-lang-en="About Us">About Us</span></a></li> -->
                              <li><a href="products-solutions.html"><i class="fas fa-solar-panel"></i> <span class="lang-ar" data-lang-ar="&#1575;&#1604;&#1605;&#1606;&#1578;&#1580;&#1575;&#1578; &#1608;&#1575;&#1604;&#1581;&#1604;&#1608;&#1604;">&#1575;&#1604;&#1605;&#1606;&#1578;&#1580;&#1575;&#1578; &#1608;&#1575;&#1604;&#1581;&#1604;&#1608;&#1604;</span><span class="lang-en" data-lang-en="Products &amp; Solutions">Products &amp; Solutions</span></a></li>
-                             <li><a href="services.html"><i class="fas fa-cogs"></i> <span class="lang-ar" data-lang-ar="&#1582;&#1583;&#1605;&#1575;&#1578;&#1606;&#1575;">&#1582;&#1583;&#1605;&#1575;&#1578;&#1606;&#1575;</span><span class="lang-en" data-lang-en="Our Services">Our Services</span></a></li>
+                             <!-- <li><a href="services.html"><i class="fas fa-cogs"></i> <span class="lang-ar" data-lang-ar="&#1582;&#1583;&#1605;&#1575;&#1578;&#1606;&#1575;">&#1582;&#1583;&#1605;&#1575;&#1578;&#1606;&#1575;</span><span class="lang-en" data-lang-en="Our Services">Our Services</span></a></li> -->
                              <li><a href="privacy-policy.html"><i class="fas fa-shield-alt"></i> <span class="lang-ar" data-lang-ar="&#1587;&#1610;&#1575;&#1587;&#1577; &#1575;&#1604;&#1582;&#1589;&#1608;&#1589;&#1610;&#1577;">&#1587;&#1610;&#1575;&#1587;&#1577; &#1575;&#1604;&#1582;&#1589;&#1608;&#1589;&#1610;&#1577;</span><span class="lang-en" data-lang-en="Privacy Policy">Privacy Policy</span></a></li>
                          </ul>
                      </div>
@@ -186,6 +399,7 @@
                  </div>
              </div>
          </footer>
+
      <!-- ===== Back to Top Button ===== -->
 
     <!-- Chatbot HTML -->
@@ -194,227 +408,259 @@
     <!-- Back to Top Button -->
     <button id="back-to-top" title="العودة للأعلى">&#8679;</button>
 
-    <!-- ===== JavaScript ===== -->
-    <script src="js/js-script.js"></script> <!-- Base Scripts -->
+    <!-- JavaScript -->
+    <script src="js/js-script.js"></script>
     <script src="js/js-chatbot.js"></script>
     <script src="js/js-back-to-top.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            loadBlogPost();
+            // Fetch and display blog post
+            fetchBlogPost();
             
-            // Language toggling event listener
+            // Listen for language changes
             const languageToggle = document.getElementById('language-toggle');
             if (languageToggle) {
                 languageToggle.addEventListener('click', function() {
-                    // After language is toggled by the main script
-                    setTimeout(() => {
-                        // Get the current language
-                        const currentLang = document.documentElement.lang;
-                        // Reload the blog post in the new language
-                        loadBlogPost();
-                    }, 100);
+                    // After language toggle is processed by the main script
+                    setTimeout(updateBlogPostLanguage, 100);
                 });
             }
         });
-
-        /**
-         * Load a single blog post based on URL parameter
-         */
-        function loadBlogPost() {
+        
+        // Get post ID from URL parameters
+        function getPostId() {
             const urlParams = new URLSearchParams(window.location.search);
-            const postId = urlParams.get('id');
-            
+            return urlParams.get('id');
+        }
+        
+        // Fetch blog post data
+        async function fetchBlogPost() {
+            const postId = getPostId();
             if (!postId) {
-                window.location.href = 'blog.html';
+                showError();
                 return;
             }
             
-            fetch('/data/blog-posts.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const post = data.posts.find(p => p.id === parseInt(postId, 10));
-                    if (post) {
-                        displayBlogPost(post);
-                        loadRelatedPosts(post, data.posts);
-                    } else {
-                        throw new Error('Post not found');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error loading blog post:', error);
-                    document.getElementById('blog-post-container').innerHTML = `
-                        <div class="error-message text-center py-5">
-                            <i class="fas fa-exclamation-triangle fa-3x text-danger mb-4"></i>
-                            <h2>
-                                <span class="lang-ar" style="display: ${document.documentElement.lang === 'ar' ? 'block' : 'none'}">
-                                    عذراً، لم يتم العثور على المقال
-                                </span>
-                                <span class="lang-en" style="display: ${document.documentElement.lang === 'en' ? 'block' : 'none'}">
-                                    Sorry, article not found
-                                </span>
-                            </h2>
-                            <p class="mt-3">
-                                <span class="lang-ar" style="display: ${document.documentElement.lang === 'ar' ? 'block' : 'none'}">
-                                    المقال الذي تبحث عنه غير موجود أو تمت إزالته.
-                                </span>
-                                <span class="lang-en" style="display: ${document.documentElement.lang === 'en' ? 'block' : 'none'}">
-                                    The article you're looking for doesn't exist or has been removed.
-                                </span>
-                            </p>
-                            <a href="blog.html" class="btn btn-primary mt-4">
-                                <span class="lang-ar" style="display: ${document.documentElement.lang === 'ar' ? 'inline' : 'none'}">
-                                    العودة إلى المدونة
-                                </span>
-                                <span class="lang-en" style="display: ${document.documentElement.lang === 'en' ? 'inline' : 'none'}">
-                                    Back to Blog
-                                </span>
-                            </a>
-                        </div>
-                    `;
-                });
+            try {
+                const response = await fetch('data/blog-posts.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch blog posts');
+                }
+                
+                const data = await response.json();
+                if (!data || !data.posts) {
+                    throw new Error('Invalid blog posts data');
+                }
+                
+                const post = data.posts.find(p => p.id.toString() === postId.toString());
+                if (!post) {
+                    showError();
+                    return;
+                }
+                
+                displayBlogPost(post);
+                
+                // Find related posts (posts with same tags, excluding current post)
+                const relatedPosts = findRelatedPosts(post, data.posts);
+                if (relatedPosts.length > 0) {
+                    displayRelatedPosts(relatedPosts);
+                } else {
+                    document.getElementById('related-posts').style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error fetching blog post:', error);
+                showError();
+            }
         }
-
-        /**
-         * Display a single blog post
-         */
+        
+        // Display blog post
         function displayBlogPost(post) {
-            const container = document.getElementById('blog-post-container');
             const currentLang = document.documentElement.lang || 'ar';
             
-            // Extract content based on language
-            const title = post.title[currentLang] || post.title['en'] || 'Untitled';
-            const content = post.content[currentLang] || post.content['en'] || '';
-            const author = post.author[currentLang] || post.author['en'] || '';
+            // Set title and meta information
+            const title = post.title[currentLang] || post.title.ar || post.title.en || '';
+            document.title = `${title} | Ultra Solar Egypt`;
             
-            // Format date
-            const postDate = new Date(post.date);
+            // Update meta description
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                const content = post.content[currentLang] || post.content.ar || post.content.en || '';
+                const plainText = content.replace(/#+\s|[*_~`]/g, '').replace(/\n/g, ' ');
+                metaDescription.setAttribute('content', plainText.substring(0, 160) + '...');
+            }
+            
+            // Set blog post elements
+            document.getElementById('blog-title').textContent = title;
+            
+            // Set author
+            const author = post.author[currentLang] || post.author.ar || post.author.en || '';
+            document.getElementById('blog-author').textContent = author;
+            
+            // Format and set date
+            const dateObj = new Date(post.date);
             const formattedDate = new Intl.DateTimeFormat(currentLang === 'ar' ? 'ar-EG' : 'en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
-            }).format(postDate);
+            }).format(dateObj);
+            document.getElementById('blog-date').textContent = formattedDate;
+            
+            // Set image
+            const blogImage = document.getElementById('blog-image');
+            blogImage.src = post.image;
+            blogImage.alt = title;
             
             // Parse markdown content
+            const content = post.content[currentLang] || post.content.ar || post.content.en || '';
             const parsedContent = marked.parse(content);
+            document.getElementById('blog-content').innerHTML = parsedContent;
             
-            // Update page title and meta tags
-            document.title = title + ' - Ultra Solar Egypt';
-            const metaDescription = document.querySelector('meta[name="description"]');
-            if (metaDescription) {
-                // Extract plain text for meta description (first 160 chars)
-                const plainTextContent = content.replace(/#+\s|[*_~`]/g, '').replace(/\n/g, ' ');
-                metaDescription.setAttribute('content', plainTextContent.substring(0, 160) + '...');
+            // Display tags
+            const tagsContainer = document.getElementById('blog-tags');
+            tagsContainer.innerHTML = '';
+            if (post.tags && post.tags.length > 0) {
+                post.tags.forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'blog-post-tag';
+                    tagElement.textContent = tag;
+                    tagsContainer.appendChild(tagElement);
+                });
+            } else {
+                tagsContainer.style.display = 'none';
             }
             
-            // Create HTML for the blog post
-            container.innerHTML = `
-                <article class="blog-post">
-                    <div class="blog-post-header">
-                        <h1>${title}</h1>
-                        <div class="blog-post-meta">
-                            <div class="blog-date">
-                                <i class="far fa-calendar-alt"></i>
-                                <span>${formattedDate}</span>
-                            </div>
-                            <div class="blog-author">
-                                <i class="far fa-user"></i>
-                                <span>${author}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blog-featured-image">
-                        <img src="${post.image || 'images/blog/default-blog.jpg'}" alt="${title}" class="img-fluid">
-                    </div>
-                    <div class="blog-post-content">
-                        ${parsedContent}
-                    </div>
-                    <div class="blog-tags mt-4">
-                        ${post.tags.map(tag => `
-                            <span class="blog-tag">${tag}</span>
-                        `).join('')}
-                    </div>
-                </article>
-            `;
+            // Show blog post content
+            document.getElementById('loading-indicator').style.display = 'none';
+            document.getElementById('blog-post-content').style.display = 'block';
+            
+            // Fix RTL/LTR icon direction for back button
+            const backButton = document.querySelector('.blog-back-btn');
+            if (backButton) {
+                const icon = backButton.querySelector('i');
+                if (icon) {
+                    if (currentLang === 'ar') {
+                        icon.className = 'fas fa-arrow-right';
+                    } else {
+                        icon.className = 'fas fa-arrow-left';
+                    }
+                }
+            }
         }
-
-        /**
-         * Load related posts
-         */
-        function loadRelatedPosts(currentPost, allPosts) {
-            const container = document.getElementById('related-posts-container');
+        
+        // Find related posts
+        function findRelatedPosts(currentPost, allPosts) {
+            // If current post has no tags, return most recent posts
+            if (!currentPost.tags || currentPost.tags.length === 0) {
+                return allPosts
+                    .filter(post => post.id.toString() !== currentPost.id.toString())
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 3);
+            }
+            
+            // Find posts with matching tags
+            const postsWithMatchingTags = allPosts.filter(post => {
+                if (post.id.toString() === currentPost.id.toString()) return false;
+                if (!post.tags || post.tags.length === 0) return false;
+                return post.tags.some(tag => currentPost.tags.includes(tag));
+            });
+            
+            // If we have enough related posts, return them
+            if (postsWithMatchingTags.length >= 3) {
+                return postsWithMatchingTags.slice(0, 3);
+            }
+            
+            // Otherwise, add recent posts to fill up to 3
+            const recentPosts = allPosts
+                .filter(post => {
+                    return post.id.toString() !== currentPost.id.toString() && 
+                           !postsWithMatchingTags.some(p => p.id.toString() === post.id.toString());
+                })
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            return [...postsWithMatchingTags, ...recentPosts].slice(0, 3);
+        }
+        
+        // Display related posts
+        function displayRelatedPosts(relatedPosts) {
+            const relatedPostsGrid = document.getElementById('related-posts-grid');
             const currentLang = document.documentElement.lang || 'ar';
             
-            // Find posts with similar tags (up to 3)
-            const relatedPosts = allPosts
-                .filter(post => post.id !== currentPost.id) // Exclude current post
-                .filter(post => {
-                    // Check for tag overlap
-                    return post.tags.some(tag => currentPost.tags.includes(tag));
-                })
-                .slice(0, 3); // Limit to 3 related posts
+            relatedPostsGrid.innerHTML = '';
             
-            if (relatedPosts.length === 0) {
-                container.parentElement.parentElement.style.display = 'none';
-                return;
-            }
-            
-            container.innerHTML = '';
-            
-            // Create a card for each related post
             relatedPosts.forEach(post => {
-                const title = post.title[currentLang] || post.title['en'] || 'Untitled';
-                const content = post.content[currentLang] || post.content['en'] || '';
-                const author = post.author[currentLang] || post.author['en'] || '';
+                const title = post.title[currentLang] || post.title.ar || post.title.en || '';
+                const excerpt = (post.content[currentLang] || post.content.ar || post.content.en || '')
+                    .replace(/#+\s|[*_~`]/g, '')
+                    .replace(/\n/g, ' ')
+                    .substring(0, 100) + '...';
                 
-                // Create excerpt from content
-                const plainText = content.replace(/#+\s|[*_~`]/g, '').replace(/\n/g, ' ');
-                const excerpt = plainText.substring(0, 100) + (plainText.length > 100 ? '...' : '');
-                
-                // Format date
-                const postDate = new Date(post.date);
+                const dateObj = new Date(post.date);
                 const formattedDate = new Intl.DateTimeFormat(currentLang === 'ar' ? 'ar-EG' : 'en-US', {
                     year: 'numeric',
-                    month: 'long',
+                    month: 'short',
                     day: 'numeric'
-                }).format(postDate);
+                }).format(dateObj);
                 
-                const card = document.createElement('article');
-                card.className = 'blog-card animated-card';
-                
-                card.innerHTML = `
+                const postElement = document.createElement('div');
+                postElement.className = 'blog-card animated-card';
+                postElement.innerHTML = `
                     <div class="blog-image">
-                        <img src="${post.image || 'images/blog/default-blog.jpg'}" alt="${title}">
+                        <img src="${post.image}" alt="${title}">
                     </div>
                     <div class="blog-content">
+                        <h3 class="blog-title">${title}</h3>
                         <div class="blog-meta">
-                            <div class="blog-date">
-                                <i class="far fa-calendar-alt"></i>
-                                <span>${formattedDate}</span>
-                            </div>
-                            <div class="blog-author">
-                                <i class="far fa-user"></i>
-                                <span>${author}</span>
-                            </div>
+                            <span><i class="far fa-calendar-alt"></i> ${formattedDate}</span>
                         </div>
-                        <h2 class="blog-title">${title}</h2>
-                        <div class="blog-excerpt">${excerpt}</div>
-                        <a href="blog-post.html?id=${post.id}" class="blog-read-more">
-                            <span class="lang-ar" style="display: ${currentLang === 'ar' ? 'inline' : 'none'}">قراءة المزيد</span>
-                            <span class="lang-en" style="display: ${currentLang === 'en' ? 'inline' : 'none'}">Read More</span>
-                            <i class="fas fa-arrow-right"></i>
+                        <p class="blog-excerpt">${excerpt}</p>
+                        <a href="blog-post.html?id=${post.id}" class="read-more">
+                            <span class="lang-ar" ${currentLang !== 'ar' ? 'style="display:none"' : ''}>قراءة المزيد</span>
+                            <span class="lang-en" ${currentLang !== 'en' ? 'style="display:none"' : ''}>Read More</span>
+                            <i class="fas fa-${currentLang === 'ar' ? 'arrow-left' : 'arrow-right'}"></i>
                         </a>
                     </div>
                 `;
                 
-                container.appendChild(card);
+                relatedPostsGrid.appendChild(postElement);
             });
         }
+        
+        // Show error message
+        function showError() {
+            document.getElementById('loading-indicator').style.display = 'none';
+            document.getElementById('error-message').style.display = 'block';
+        }
+        
+        // Update blog post language when language is switched
+        function updateBlogPostLanguage() {
+            const currentLang = document.documentElement.lang || 'ar';
+            const postId = getPostId();
+            
+            if (!postId) {
+                return;
+            }
+            
+            fetch('data/blog-posts.json')
+                .then(response => response.json())
+                .then(data => {
+                    const post = data.posts.find(p => p.id.toString() === postId.toString());
+                    if (post) {
+                        displayBlogPost(post);
+                        
+                        // Update related posts
+                        const relatedPosts = findRelatedPosts(post, data.posts);
+                        if (relatedPosts.length > 0) {
+                            displayRelatedPosts(relatedPosts);
+                            document.getElementById('related-posts').style.display = 'block';
+                        } else {
+                            document.getElementById('related-posts').style.display = 'none';
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating blog post language:', error);
+                });
+        }
     </script>
-
 </body>
 </html>
