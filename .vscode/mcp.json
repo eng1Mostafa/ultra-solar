@@ -1,0 +1,21 @@
+{
+    "servers": {
+        "sequential-thinking": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sequential-thinking"
+            ],
+            "env": {
+                "DISABLE_THOUGHT_LOGGING": "${input:disable_thought_logging}"
+            }
+        }
+    },
+    "inputs": [
+        {
+            "id": "disable_thought_logging",
+            "type": "promptString",
+            "description": "Disable Thought Logging?"
+        }
+    ]
+}
