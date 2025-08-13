@@ -102,6 +102,24 @@
             "date": "2025-08-15",
             "image": "images/products/home-solar.jpg",
             "tags": []
+        },
+        {
+            "id": "6",
+            "title": {
+                "ar": "asdasdasd",
+                "en": "asdasdasd"
+            },
+            "content": {
+                "ar": "asdasdasd",
+                "en": "asdasdasd"
+            },
+            "author": {
+                "ar": "asdasdasd",
+                "en": "asdasdasd"
+            },
+            "date": "2025-08-15",
+            "image": "images/products/home-solar.jpg",
+            "tags": []
         }
     ]
 }
