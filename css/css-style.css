@@ -29,40 +29,39 @@ html {
     --bold-font-weight: 600;
     --logo-font-weight: 700;
 
-    /* Light Mode Colors */
-    --primary-color: #006838; --primary-light: #2e8a58; --primary-dark: #004d2c;
-    --secondary-color: #4CAF50; --secondary-light: #81C784; --secondary-dark: #388E3C;
-    --accent-color: #ffc107; --accent-light: #FFD54F; --accent-dark: #FFA000;
+    /* Light Mode Colors - Purple-Blue Gradient */
+    --primary-color: #5D50C6; --primary-light: #7A6FDE; --primary-dark: #4438A8; 
+    --secondary-color: #4F6EDB; --secondary-light: #6B8AEF; --secondary-dark: #3656C4;
+
+    --accent-color: #0EA5E9; --accent-light: #38BDF8; --accent-dark: #0284C7;
     --text-color: #212529; --text-muted-color: #6c757d;
     --bg-color: #ffffff; --bg-light: #f8f9fa; --card-bg: #ffffff;
     --body-bg: #ffffff; /* Added for services page specific background */
     --border-color: #dee2e6;
     --header-bg: rgba(255, 255, 255, 0.97); /* Base header bg */
-    --top-bar-bg: #006838; --top-bar-text: #e5e7eb; --top-bar-link-hover: var(--accent-color);
-    --star-color: #ffc107;
-    --primary-rgb: 0, 104, 56; /* Updated for green color */
-    --secondary-rgb: 76, 175, 80; /* Added for rgba usage */
-    --star-color-rgb: 255, 193, 7; /* Added for rgba usage */
-    --accent-rgb: 255, 152, 0; /* Added accent rgb */
+    --top-bar-bg: #4F6EDB; --top-bar-text: #e5e7eb; --top-bar-link-hover: var(--accent-color);
+    --star-color: #0EA5E9;
+    --primary-rgb: 93, 80, 198; /* Purple-blue */
+    --secondary-rgb: 79, 110, 219; /* Blue with purple tint */
+    --star-color-rgb: 14, 165, 233; /* Vivid blue */
+    --accent-rgb: 56, 189, 248; /* Light blue */
 
-
-    /* Dark Mode Colors */
-    --primary-color-dark: #2e8a58; --primary-light-dark: #51a778; --primary-dark-dark: #004d2c;
-    --secondary-color-dark: #69db7c; --secondary-light-dark: #96f2a4; --secondary-dark-dark: #40c057;
-    --accent-color-dark: #ffc078; --accent-light-dark: #ffd8a8; --accent-dark-dark: #f5a64e;
+    /* Dark Mode Colors - Purple-Blue Gradient */
+    --primary-color-dark: #6B62D9; --primary-light-dark: #8A81F2; --primary-dark-dark: #4A43AF;
+    --secondary-color-dark: #5D82EC; --secondary-light-dark: #7B9CF8; --secondary-dark-dark: #3D6AD9; 
+    --accent-color-dark: #38BDF8; --accent-light-dark: #7DD3FC; --accent-dark-dark: #0284C7;
     --text-color-dark: #f1f3f5; --text-muted-color-dark: #adb5bd;
     --bg-color-dark: #121212; --bg-light-dark: #1a1a1a; --card-bg-dark: #1e1e1e;
     --body-bg-dark: #121212; /* Added for services page specific background */
     --border-color-dark: #495057;
     --header-bg-dark: rgba(30, 30, 30, 0.97); /* Base header bg dark */
-    --top-bar-bg-dark: #000000; --top-bar-text-dark: var(--text-muted-color-dark); --top-bar-link-hover-dark: var(--accent-color-dark);
-    --star-color-dark: #ffca2c;
+    --top-bar-bg-dark: #1E293B; --top-bar-text-dark: var(--text-muted-color-dark); --top-bar-link-hover-dark: var(--accent-color-dark);
+    --star-color-dark: #38BDF8;
     /* Dark mode RGB counterparts */
-    --primary-rgb-dark: 77, 171, 247;
-    --secondary-rgb-dark: 105, 219, 124;
-    --star-color-rgb-dark: 255, 202, 44;
-    --accent-rgb-dark: 255, 192, 120; /* Added accent rgb dark */
-
+    --primary-rgb-dark: 107, 98, 217;   /* Purple-blue for dark mode */
+    --secondary-rgb-dark: 93, 130, 236; /* Blue with purple tint for dark */
+    --star-color-rgb-dark: 56, 189, 248; /* Sky blue */
+    --accent-rgb-dark: 123, 156, 248;    /* Light periwinkle */
 
     /* Gradients */
     --primary-gradient: linear-gradient(135deg, var(--primary-light), var(--primary-color));
@@ -70,7 +69,7 @@ html {
     --accent-gradient: linear-gradient(135deg, var(--accent-light), var(--accent-color)); /* Added accent gradient */
     --primary-gradient-dark: linear-gradient(135deg, var(--primary-dark-dark), var(--primary-color-dark));
     --secondary-gradient-dark: linear-gradient(135deg, var(--secondary-light-dark), var(--secondary-color-dark));
-     --accent-gradient-dark: linear-gradient(135deg, var(--accent-light-dark), var(--accent-color-dark)); /* Added accent gradient dark */
+    --accent-gradient-dark: linear-gradient(135deg, var(--accent-light-dark), var(--accent-color-dark)); /* Added accent gradient dark */
 
     /* Layout & Spacing */
     --container-width: 1200px;
@@ -183,7 +182,7 @@ html[lang="en"] .btn:hover i { transform: translateX(3px); }
 
 /* ==================== Top Bar ==================== */
 #top-bar { 
-    background: linear-gradient(to right, #006838, #004d2c); 
+    background: linear-gradient(to right, #9c1385, #570e4d); 
     color: var(--top-bar-text); 
     padding: 0.7rem 0; 
     font-size: 0.85rem; 
@@ -191,7 +190,7 @@ html[lang="en"] .btn:hover i { transform: translateX(3px); }
     backdrop-filter: blur(10px);
 }
 :root.dark-mode #top-bar { 
-    background: linear-gradient(to right, #006838, #004d2c); 
+    background: linear-gradient(to right, #600a66, #48004d); 
     border-bottom-color: rgba(255, 255, 255, 0.05);
 }
 .top-bar-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem 1.5rem; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--section-padding-x); }
@@ -215,29 +214,29 @@ html[lang="en"] .social-icons-top { margin-left: 0; margin-right: 1rem; }
 /* ==================== Main Header (Enhanced) ==================== */
 .site-header { 
     width: 100%; 
-    background-color: rgba(240, 255, 240, 0.95); 
+    background-color: rgba(246, 247, 255, 0.95); 
     backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px); 
     padding: 0.8rem 0; 
     position: sticky; 
     top: 0; 
     z-index: 1000; 
-    border-bottom: 1px solid rgba(0, 104, 56, 0.1); 
-    box-shadow: 0 5px 20px rgba(0, 104, 56, 0.1); 
+    border-bottom: 1px solid rgba(93, 80, 198, 0.1); 
+    box-shadow: 0 5px 20px rgba(93, 80, 198, 0.1); 
     transition: all 0.3s ease; 
 }
 :root.dark-mode .site-header { 
-    background-color: rgba(0, 77, 44, 0.95); 
-    border-bottom-color: rgba(255, 255, 255, 0.05); 
-    box-shadow: 0 5px 20px rgba(0, 104, 56, 0.15); 
+    background-color: rgba(26, 21, 46, 0.95); 
+    border-bottom-color: rgba(107, 98, 217, 0.15); 
+    box-shadow: 0 5px 20px rgba(107, 98, 217, 0.15); 
 }
 .site-header.scrolled { 
     padding: 0.6rem 0; 
-    box-shadow: 0 8px 25px rgba(0, 104, 56, 0.2); 
-    background-color: rgba(240, 255, 240, 0.98);
+    box-shadow: 0 8px 25px rgba(93, 80, 198, 0.15); 
+    background-color: rgba(246, 247, 255, 0.98);
 }
 :root.dark-mode .site-header.scrolled { 
-    background-color: rgba(0, 77, 44, 0.98); 
+    background-color: rgba(26, 21, 46, 0.98); 
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
 }
 .header-container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--section-padding-x); position: relative; }
@@ -511,7 +510,7 @@ html[lang="ar"] .form-floating > .form-control:focus ~ label, html[lang="ar"] .f
 
 .pagination { margin-top: 3.5rem; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; position: relative; padding: 0.5rem; }
 .pagination::before { content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--primary-light)); border-radius: 3px; opacity: 0.7; }
-:root.dark-mode .pagination::before { background: linear-gradient(90deg, var(--primary-color-dark), var(--primary-light-dark)); }
+:root.dark-mode .pagination::before { background: linear-gradient(90deg, var(--primary-color-dark), var (--primary-light-dark)); }
 .page-numbers { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 12px; border: 1px solid rgba(var(--primary-rgb), 0.15); border-radius: var(--border-radius); color: var(--text-color); font-weight: 500; text-decoration: none; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; overflow: hidden; background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03); }
 .page-numbers::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.05), transparent); opacity: 0; transition: opacity 0.3s ease; z-index: -1; }
 .page-numbers:hover { transform: translateY(-3px); border-color: rgba(var(--primary-rgb), 0.3); color: var(--primary-color); box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.15); }
@@ -547,12 +546,14 @@ html[lang="en"] .page-numbers.next:hover i { transform: translateX(3px); }
 
 /* ==================== Enhanced Footer ==================== */
 .site-footer-bottom { 
-    background: linear-gradient(135deg, #004d2c, #006838); 
-    color: #e5e5e5; 
+    background: linear-gradient(to right, #9c1385, #570e4d); 
+    color: #fff; 
     position: relative; 
     overflow: hidden; 
     padding-top: 5rem; 
     padding-bottom: 2rem; 
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
 }
 .site-footer-bottom::before { 
     content: ''; 
@@ -575,35 +576,27 @@ html[lang="en"] .page-numbers.next:hover i { transform: translateX(3px); }
 .social-icons-footer { display: flex; gap: 1rem; margin-top: 1rem; }
 .social-icons-footer a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); color: #fff; transition: all 0.3s ease; text-decoration: none; font-size: 1.1rem; }
 .social-icons-footer a:hover { 
-    background: var(--accent-color, #ffc107); 
-    color: #111; 
+    background: var(--accent-color); 
+    color: #fff; 
     transform: translateY(-3px); 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3); 
 }
-:root.dark-mode .social-icons-footer a:hover { 
-    background: var(--accent-color-dark); 
-    color: #111; 
-    box-shadow: 0 5px 15px rgba(var(--accent-rgb-dark), 0.3); 
-}
+:root.dark-mode .social-icons-footer a:hover { background: var(--accent-color-dark); color: #111; }
 .footer-heading { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; color: #fff; position: relative; padding-bottom: 0.8rem; display: inline-block; }
 .footer-divider { 
     width: 50px; 
     height: 3px; 
-    background: var(--accent-color, #ffc107); 
+    background: var(--accent-color); 
     margin-bottom: 1.5rem; 
     position: relative; 
     border-radius: 3px; 
-}
-:root.dark-mode .footer-divider { 
-    background: var(--accent-color-dark);
-    box-shadow: 0 0 10px rgba(var(--accent-rgb-dark), 0.3); 
 }
 .footer-menu { list-style: none; padding: 0; margin: 0; }
 .footer-menu li { margin-bottom: 0.8rem; }
 .footer-menu a { color: rgba(255, 255, 255, 0.8); text-decoration: none; display: flex; align-items: center; transition: all 0.3s ease; padding: 0.3rem 0; font-size: 0.95rem; gap: 0.7rem; }
 .footer-menu a i { 
     font-size: 0.9rem; 
-    color: var(--accent-color, #ffc107); 
+    color: var(--accent-color); 
     transition: transform 0.3s ease; 
     width: 1.2em; 
     text-align: center; 
@@ -624,58 +617,47 @@ html[lang="en"] .footer-menu a:hover { transform: translateX(5px); } /* Correcte
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    color: var(--accent-color, #ffc107); 
+    color: var(--accent-color); 
     transition: all 0.3s ease; 
     font-size: 1.1rem; 
     flex-shrink: 0; 
 }
 .contact-item:hover .contact-icon { 
     background: var(--accent-light); 
-    color: #004d2c; 
+    color: #fff; 
     transform: scale(1.1); 
 }
 :root.dark-mode .contact-item:hover .contact-icon { 
-    background: var(--accent-color-dark); 
-    color: var(--bg-color-dark); 
-    box-shadow: 0 0 15px rgba(var(--accent-rgb-dark), 0.4);
+    background: var(--primary-color-dark); 
+    color: #111; 
 }
 .contact-text { flex: 1; line-height: 1.6; font-size: 0.9rem; color: rgba(255, 255, 255, 0.8); }
 .contact-text strong { display: block; margin-bottom: 0.3rem; color: #fff; font-weight: 600; }
 .contact-text a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; display: inline-block; margin-right: 0.5rem; margin-bottom: 0.3rem; }
 html[lang="en"] .contact-text a { margin-right: 0; margin-left: 0.5rem; }
 .contact-text a:hover { 
-    color: var(--accent-color, #ffc107); 
+    color: var(--accent-color); 
     text-decoration: underline; 
 }
-:root.dark-mode .contact-text a:hover { 
-    color: var(--accent-light-dark);
-}
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; margin-top: 0; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-:root.dark-mode .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
 .copyright { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; }
-:root.dark-mode .copyright {
-    color: var(--text-muted-color-dark);
-}
 .copyright p { margin-bottom: 0; }
 .footer-badges { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 .quality-badge { background: rgba(255, 255, 255, 0.1); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; color: #fff; }
 .quality-badge:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
 .quality-badge i { 
-    color: var(--accent-color, #ffc107); 
+    color: var(--accent-color); 
 }
-:root.dark-mode .quality-badge i { 
-    color: var(--accent-color-dark);
+:root.dark-mode .site-footer-bottom { 
+    background: linear-gradient(to right, #600a66, #48004d); 
+    border-top-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
 }
-:root.dark-mode .quality-badge {
-    background: rgba(var(--primary-rgb-dark), 0.2);
-    border: 1px solid rgba(var(--accent-rgb-dark), 0.1);
-}
-:root.dark-mode .quality-badge:hover {
-    background: rgba(var(--primary-rgb-dark), 0.3);
-    border-color: rgba(var(--accent-rgb-dark), 0.2);
-}
+:root.dark-mode .footer-divider { background: var(--accent-color-dark); }
+:root.dark-mode .footer-menu a i { color: var(--accent-color-dark); }
+:root.dark-mode .footer-menu a:hover i { color: var(--accent-light-dark); }
+:root.dark-mode .footer-contact i { color: var(--accent-color-dark); }
+:root.dark-mode .contact-text a:hover { color: var(--accent-color-dark); }
 
 @media (max-width: 768px) { /* Footer Responsive */
     .footer-grid { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 2rem; }
