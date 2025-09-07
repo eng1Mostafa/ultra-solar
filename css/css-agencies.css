@@ -33,7 +33,7 @@
 
 .agencies-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(4, 1fr); /* 4 أعمدة */
     gap: var(--grid-gap); /* Use gap from base CSS */
     margin-top: 2rem; /* Space below section title/subtitle */
 }
