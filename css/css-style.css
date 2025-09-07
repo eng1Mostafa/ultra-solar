@@ -182,15 +182,9 @@ html[lang="en"] .btn:hover i { transform: translateX(3px); }
 
 /* ==================== Top Bar ==================== */
 #top-bar { 
-<<<<<<< HEAD
-<<<<<<< HEAD
     background: linear-gradient(to right, #9c1385, #570e4d); 
-=======
     background: linear-gradient(to right, #207bcc, #1b4ca0); 
->>>>>>> 23b5d42 (First commit - Ultra Solar website)
-=======
     background: linear-gradient(to right, #207bcc, #1b4ca0); 
->>>>>>> 23b5d420da8accadf198104e5f7bfc4dc4e16331
     color: var(--top-bar-text); 
     padding: 0.7rem 0; 
     font-size: 0.85rem; 
@@ -198,15 +192,11 @@ html[lang="en"] .btn:hover i { transform: translateX(3px); }
     backdrop-filter: blur(10px);
 }
 :root.dark-mode #top-bar { 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     background: linear-gradient(to right, #600a66, #48004d); 
-=======
     background: linear-gradient(to right, #1e0441, #1f0660); 
->>>>>>> 23b5d42 (First commit - Ultra Solar website)
-=======
+
     background: linear-gradient(to right, #1e0441, #1f0660); 
->>>>>>> 23b5d420da8accadf198104e5f7bfc4dc4e16331
     border-bottom-color: rgba(255, 255, 255, 0.05);
 }
 .top-bar-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem 1.5rem; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--section-padding-x); }
@@ -562,15 +552,10 @@ html[lang="en"] .page-numbers.next:hover i { transform: translateX(3px); }
 
 /* ==================== Enhanced Footer ==================== */
 .site-footer-bottom { 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     background: linear-gradient(to right, #9c1385, #570e4d); 
-=======
     background: linear-gradient(to right, #133d81, #216ce3); 
->>>>>>> 23b5d42 (First commit - Ultra Solar website)
-=======
     background: linear-gradient(to right, #133d81, #216ce3); 
->>>>>>> 23b5d420da8accadf198104e5f7bfc4dc4e16331
     color: #fff; 
     position: relative; 
     overflow: hidden; 
@@ -663,46 +648,36 @@ html[lang="en"] .contact-text a { margin-right: 0; margin-left: 0.5rem; }
     color: var(--accent-color); 
     text-decoration: underline; 
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; margin-top: 0; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1; border-top: 1px solid rgba(255, 255, 255, 0.1); }
 .copyright { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; }
 .copyright p { margin-bottom: 0; }
 .footer-badges { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 .quality-badge { background: rgba(255, 255, 255, 0.1); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; color: #fff; }
 .quality-badge:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
-=======
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; margin-top: 0; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1; border-top: 1px solid rgba(162, 12, 12, 0.77); }
 .copyright { color: rgb(137, 10, 10); font-size: 1.1rem; }
 .copyright p { margin-bottom: 0; }
 .footer-badges { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 .quality-badge { background: rgba(159, 4, 4, 0.855); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; color: #c82121de; }
 .quality-badge:hover { background: rgba(125, 8, 8, 0.815); transform: translateY(-2px); }
->>>>>>> 23b5d42 (First commit - Ultra Solar website)
-=======
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; margin-top: 0; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1; border-top: 1px solid rgba(162, 12, 12, 0.77); }
 .copyright { color: rgb(137, 10, 10); font-size: 1.1rem; }
 .copyright p { margin-bottom: 0; }
 .footer-badges { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 .quality-badge { background: rgba(159, 4, 4, 0.855); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; color: #c82121de; }
 .quality-badge:hover { background: rgba(125, 8, 8, 0.815); transform: translateY(-2px); }
->>>>>>> 23b5d420da8accadf198104e5f7bfc4dc4e16331
 .quality-badge i { 
     color: var(--accent-color); 
 }
 :root.dark-mode .site-footer-bottom { 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     background: linear-gradient(to right, #600a66, #48004d); 
     border-top-color: rgba(255, 255, 255, 0.05);
-=======
     background: linear-gradient(to right, #10336f, #1e0c50); 
     border-top-color: rgba(110, 10, 10, 0.05);
->>>>>>> 23b5d42 (First commit - Ultra Solar website)
-=======
+
     background: linear-gradient(to right, #10336f, #1e0c50); 
     border-top-color: rgba(110, 10, 10, 0.05);
->>>>>>> 23b5d420da8accadf198104e5f7bfc4dc4e16331
     box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
 }
 :root.dark-mode .footer-divider { background: var(--accent-color-dark); }
