@@ -204,32 +204,33 @@
             return date;
         }
 
-        const events = [
-            { day: 26, month: 1, name: 'World Energy Day', category: 'Energy & Environment', idea: 'Awareness video, showcase products, share energy-saving tips' },
-            { day: 2, month: 2, name: 'World Wetlands Day', category: 'Environment', idea: 'Raise awareness of nature and climate impact' },
-            { day: 11, month: 2, name: 'Women in Science Day', category: 'Technology', idea: 'Feature women in company or industry' },
-            { day: 22, month: 2, name: 'Roman Sun Day', category: 'Historical', idea: '-' },
-            { day: 5, month: 3, name: 'Energy Efficiency Day', category: 'Energy & Environment', idea: 'Energy-saving tips, product discounts' },
-            { day: 20, month: 3, name: 'Happiness Day', category: 'General', idea: 'Show how solar contributes to comfort and happiness' },
-            { day: 22, month: 3, name: 'World Water Day', category: 'Environment', idea: 'Tips to save water, link to energy saving' },
-            { name: 'Earth Hour (Last Saturday of March)', category: 'Environment', idea: 'Turn off lights campaign', isVariable: true, getDate: getLastSaturdayOfMarch },
-            { day: 12, month: 4, name: 'Human Space Flight Day', category: 'Technology', idea: 'Compare solar in space vs. Earth' },
-            { day: 22, month: 4, name: 'Earth Day', category: 'Environment', idea: 'Volunteer events, internal awareness activities' },
-            { day: 3, month: 5, name: 'International Sun Day', category: 'Energy & Environment', idea: 'Solar product discounts, share solar projects' },
-            { day: 5, month: 6, name: 'Environment Day', category: 'Environment', idea: 'Tree planting, employee awareness sessions' },
-            { day: 9, month: 6, name: 'IoT Day', category: 'Technology', idea: 'Link solar tech with smart systems' },
-            { day: 21, month: 6, name: 'Summer Solstice', category: 'Energy & Environment', idea: 'Highlight solar efficiency in summer' },
-            { day: 22, month: 9, name: 'Car Free Day', category: 'Environment', idea: 'Promote clean energy and sustainable transport' },
-            { name: 'World Energy Week (October)', category: 'Energy & Environment', idea: 'Educational posts', isVariable: true, getDate: getOctoberWeekDate },
-            { day: 14, month: 10, name: 'Standards Day', category: 'Technology', idea: 'Talk about product quality standards' },
-            { day: 16, month: 10, name: 'World Food Day', category: 'Environment', idea: 'Discuss solar power in agriculture' },
-            { day: 22, month: 10, name: 'Abu Simbel Sun Day', category: 'Historical', idea: '-' },
-            { day: 24, month: 10, name: 'UN Day', category: 'General', idea: 'Show contribution to SDGs' },
-            { day: 14, month: 11, name: 'Climate Awareness Day', category: 'Environment', idea: 'How solar reduces emissions' },
-            { day: 5, month: 12, name: 'Soil Day', category: 'Environment', idea: 'Solar panels in agriculture' },
-            { day: 25, month: 12, name: 'Roman Sun Day', category: 'Historical', idea: '-' },
-            { name: 'UN Climate Conference (COP)', category: 'Environment', idea: 'Highlight role of solar', isVariable: true, getDate: () => new Date(new Date().getFullYear(), 10, 10) }
-        ];
+            const events = [
+        { day: 26, month: 1, name: 'World Energy Day', category: 'Energy & Environment', definition: 'A day to raise awareness of the importance of energy conservation and sustainable use.' },
+        { day: 2, month: 2, name: 'World Wetlands Day', category: 'Environment', definition: 'Celebrates the ecological value of wetlands and their role in climate regulation.' },
+        { day: 11, month: 2, name: 'Women in Science Day', category: 'Technology', definition: 'Recognizes the achievements of women in science and promotes gender equality in STEM.' },
+        { day: 22, month: 2, name: 'Roman Sun Day', category: 'Historical', definition: 'An ancient Roman festival dedicated to the Sun god.' },
+        { day: 5, month: 3, name: 'Energy Efficiency Day', category: 'Energy & Environment', definition: 'Highlights ways to use energy more efficiently and reduce waste.' },
+        { day: 20, month: 3, name: 'Happiness Day', category: 'General', definition: 'A global initiative promoting happiness as a universal goal.' },
+        { day: 22, month: 3, name: 'World Water Day', category: 'Environment', definition: 'Raises awareness of water scarcity and the need for sustainable management.' },
+        { name: 'Earth Hour (Last Saturday of March)', category: 'Environment', definition: 'A worldwide movement encouraging people to turn off lights to support environmental protection.', isVariable: true, getDate: getLastSaturdayOfMarch },
+        { day: 12, month: 4, name: 'Human Space Flight Day', category: 'Technology', definition: 'Marks the anniversary of the first human space flight by Yuri Gagarin in 1961.' },
+        { day: 22, month: 4, name: 'Earth Day', category: 'Environment', definition: 'Promotes environmental protection and sustainability worldwide.' },
+        { day: 3, month: 5, name: 'International Sun Day', category: 'Energy & Environment', definition: 'Celebrates the importance of the Sun as a source of life and energy.' },
+        { day: 5, month: 6, name: 'Environment Day', category: 'Environment', definition: 'The UN’s principal day for encouraging awareness and action for the environment.' },
+        { day: 9, month: 6, name: 'IoT Day', category: 'Technology', definition: 'Highlights the role of the Internet of Things in modern society and innovation.' },
+        { day: 21, month: 6, name: 'Summer Solstice', category: 'Energy & Environment', definition: 'The longest day of the year, significant for solar energy and cultural events.' },
+        { day: 22, month: 9, name: 'Car Free Day', category: 'Environment', definition: 'Encourages cities and residents to go car-free to reduce pollution.' },
+        { name: 'World Energy Week (October)', category: 'Energy & Environment', definition: 'Focuses on global discussions about energy policies and sustainable development.', isVariable: true, getDate: getOctoberWeekDate },
+        { day: 14, month: 10, name: 'Standards Day', category: 'Technology', definition: 'Recognizes the role of international standards in technology and trade.' },
+        { day: 16, month: 10, name: 'World Food Day', category: 'Environment', definition: 'Highlights the importance of food security and sustainable agriculture.' },
+        { day: 22, month: 10, name: 'Abu Simbel Sun Day', category: 'Historical', definition: 'Celebrates the solar alignment phenomenon at the Abu Simbel temple in Egypt.' },
+        { day: 24, month: 10, name: 'UN Day', category: 'General', definition: 'Marks the anniversary of the entry into force of the UN Charter in 1945.' },
+        { day: 14, month: 11, name: 'Climate Awareness Day', category: 'Environment', definition: 'Promotes global action to tackle climate change.' },
+        { day: 5, month: 12, name: 'Soil Day', category: 'Environment', definition: 'Raises awareness of the importance of healthy soil and sustainable land management.' },
+        { day: 25, month: 12, name: 'Roman Sun Day', category: 'Historical', definition: 'An ancient Roman celebration of the rebirth of the Sun during the winter solstice.' },
+        { name: 'UN Climate Conference (COP)', category: 'Environment', definition: 'Annual conference where nations negotiate and review climate change actions.', isVariable: true, getDate: () => new Date(new Date().getFullYear(), 10, 10) }
+    ];
+
 
         function getEventDate(event) {
             const now = new Date();
